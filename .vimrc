@@ -152,10 +152,10 @@ map <leader>e :edit %%
 " set winheight=999
 
 " Surround word with separators
-nnoremap <leader>" lbi"<esc>ei"<esc>lel
-nnoremap <leader>' lbi'<esc>ei'<esc>lel
-nnoremap <leader>( lbi(<esc>ei)<esc>lel
-nnoremap <leader>[ lbi[<esc>ei]<esc>lel
+nnoremap <leader>" lbi"<esc>ea"<esc>lel
+nnoremap <leader>' lbi'<esc>ea'<esc>lel
+nnoremap <leader>( lbi(<esc>ea)<esc>lel
+nnoremap <leader>[ lbi[<esc>ea]<esc>lel
 
 """""""""""""""""""""""
 " WINDOW MANAGEMENT "
@@ -319,18 +319,20 @@ set laststatus=2
 """""""""""""
 " Greper "
 """""""""""""
-"nmap <silent> <leader>a <Plug>GreperBangWord\|<C-w>p
-"nmap <silent> <leader>A <Plug>GreperBangWORD\|<C-w>p
+nmap <silent> <leader>a <Plug>GreperBangWord\|<C-w>p
+nmap <silent> <leader>A <Plug>GreperBangWORD\|<C-w>p
 
 """""""""""
 " Tabular "
 """""""""""
 if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
+  nmap <Leader>t= :Tabularize /=<CR>
+  vmap <Leader>t= :Tabularize /=<CR>
+  nmap <Leader>t: :Tabularize /:\zs<CR>
+  vmap <Leader>t: :Tabularize /:\zs<CR>
 endif
 
 " Custom
 nnoremap gr :tabprevious<CR>
+set splitbelow
+set splitright
