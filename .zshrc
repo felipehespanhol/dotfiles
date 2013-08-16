@@ -41,19 +41,24 @@ export DISABLE_AUTO_TITLE=true
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew git ruby rvm rails tmux tmuxinator vi-mode vundle)
+plugins=(brew git ruby rvm rails tmuxinator vi-mode vundle)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=$PATH:/Users/felipehespanhol/.rvm/gems/ruby-1.9.3-p448@test/bin:/Users/felipehespanhol/.rvm/gems/ruby-1.9.3-p448@global/bin:/Users/felipehespanhol/.rvm/rubies/ruby-1.9.3-p448/bin:/Users/felipehespanhol/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/felipehespanhol/.rvm/bin
-export ruby_configure_flags="--with-readline-dir=/usr/local/Cellar/readline/6.2.4"
+#export ruby_configure_flags="--with-readline-dir=/usr/local/Cellar/readline/6.2.4"
 export LANG='pt_BR.UTF-8'
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 #[[ -r "$HOME/.rvm/scripts/completion" ]] && . "$HOME/.rvm/scripts/completion" #This adds rvm shell completion
+
+# Tmux config
+# for tmux: export 256color
+[ -n "$TMUX" ] && export TERM="screen-256color"
+export TERM="xterm-256color"
 
 # Tmuxinator config
 export EDITOR="vim"
