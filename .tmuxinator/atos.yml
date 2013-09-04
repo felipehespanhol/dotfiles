@@ -10,3 +10,4 @@ tabs:
   - shell:   clear
   - console: rails c
   - db:      rails db
+  - notes:   vim ~/notes_atos.txt

@@ -326,10 +326,10 @@ nmap <silent> <leader>A <Plug>GreperBangWORD\|<C-w>p
 " Tabular "
 """""""""""
 if exists(":Tabularize")
-  nmap <Leader>t= :Tabularize /=<CR>
-  vmap <Leader>t= :Tabularize /=<CR>
-  nmap <Leader>t: :Tabularize /:\zs<CR>
-  vmap <Leader>t: :Tabularize /:\zs<CR>
+  nmap <leader>t= :Tabularize /=<CR>
+  vmap <leader>t= :Tabularize /=<CR>
+  nmap <leader>t: :Tabularize /:\zs<CR>
+  vmap <leader>t: :Tabularize /:\zs<CR>
 endif
 
 " Custom
