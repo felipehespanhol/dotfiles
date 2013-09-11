@@ -4,8 +4,8 @@
 project_name: BVS Crawler Web
 project_root: ~/rails_projects/bvs_crawler_web
 #socket_name: foo # Not needed.  Remove to use default socket
-rvm: 2.0.0-p247@bvs_crawler
-tabs:
+#rvm: 2.0.0-p247@bvs_crawler
+windows:
   - server:  rails s
   - vim:     vim
   - shell:   clear
