@@ -3,11 +3,10 @@
 project_name: Atos
 project_root: ~/rails_projects/atos
 #socket_name: foo # Not needed.  Remove to use default socket
-rvm: 1.9.3-p448@atos
+#rvm: 1.9.3-p448@atos
 tabs:
   - server:  rails s
   - vim:     vim
   - shell:   clear
   - console: rails c
-  - db:      rails db
   - notes:   vim ~/notes_atos.txt

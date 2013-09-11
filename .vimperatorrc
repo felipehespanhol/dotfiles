@@ -1,4 +1,4 @@
 noremap s :open google 
 noremap S :tabopen google 
 noremap gr gT
-noremap e :tamove 
+noremap e :tabmove 
