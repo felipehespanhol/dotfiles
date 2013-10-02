@@ -64,8 +64,11 @@ export TERM="xterm-256color"
 export EDITOR="vim"
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
-# Alias
+# Alias geral
 alias ll='ls -l'
+alias asdf='sudo shutdown -h -P 0'
+
+# Alias trabalho
 alias tclaro='tmuxinator ecommerce-claro'
 alias tesf='tmuxinator exerca-sua-fe'
 alias tatos='tmuxinator atos'
