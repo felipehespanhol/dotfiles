@@ -53,7 +53,7 @@ export LANG='pt_BR.UTF-8'
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
-#[[ -r "$HOME/.rvm/scripts/completion" ]] && . "$HOME/.rvm/scripts/completion" #This adds rvm shell completion
+[[ -r "$HOME/.rvm/scripts/completion" ]] && . "$HOME/.rvm/scripts/completion" #This adds rvm shell completion
 
 # Tmux config
 # for tmux: export 256color
@@ -73,3 +73,5 @@ alias tclaro='tmuxinator ecommerce-claro'
 alias tesf='tmuxinator exerca-sua-fe'
 alias tatos='tmuxinator atos'
 alias tbvs='tmuxinator bvs_crawler_web'
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
