@@ -15,7 +15,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'rizzatti/ctrlp.vim'
+Bundle 'kien/ctrlp.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/greper.vim'
