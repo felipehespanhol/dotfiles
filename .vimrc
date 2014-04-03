@@ -116,13 +116,19 @@ nnoremap gr :tabprevious<CR>
 " Greper
 nmap <silent> <leader>a <Plug>GreperBangWord\|<C-w>p
 nmap <silent> <leader>A <Plug>GreperBangWORD\|<C-w>p
+nmap <C-g> :G! 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256
-set background=dark
 colorscheme solarized
+let s:uname = system("echo -n \"$(uname)\"")
+if !v:shell_error && s:uname =~ "Darwin"
+  set background=light
+else
+  set background=dark
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TAB SPACING/SIZE
@@ -209,16 +215,10 @@ command! -nargs=* Wrap set wrap linebreak nolist
 
 " Open buffer with <C-B>
 nmap <C-B> :CtrlPBuffer<cr>
-let g:ctrlp_custom_ignore='\.git$\|\.pdf$|\.log$'
+let g:ctrlp_custom_ignore='\.git$\|\.pdf$|.log$'
 let g:ctrlp_use_caching = 0
 let g:ctrlp_max_height=5
 let g:ctrlp_extensions=['quickfix']
-let g:ctrlp_user_command={
-  \ 'types' : {
-    \ 1: ['.git', 'cd %s && git ls-tree -r HEAD | grep -v -e "^\d\+\scommit" | cut -f 2']
-    \ },
-  \ 'fallback': 'find %s -name "tmp" -prune -o -print'
-  \ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Powerline "
