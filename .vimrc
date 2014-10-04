@@ -10,23 +10,27 @@ filetype indent on
 
 " let Vundle manage Vundle
 set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
-
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'kien/ctrlp.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/greper.vim'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-rails'
-Bundle 'scrooloose/nerdtree'
-Bundle 'dhruvasagar/vim-table-mode'
-Bundle 'godlygeek/tabular'
-Bundle 'Lokaltog/powerline'
-Bundle 'moll/vim-bbye'
+call vundle#begin()
+Plugin 'gmarik/vundle'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'rizzatti/funcoo.vim'
+Plugin 'rizzatti/greper.vim'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-rails'
+Plugin 'scrooloose/nerdtree'
+Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'godlygeek/tabular'
+Plugin 'Lokaltog/powerline'
+Plugin 'moll/vim-bbye'
+" Snippets and its dependencies
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+call vundle#end()
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -116,6 +120,7 @@ nnoremap gr :tabprevious<CR>
 " Greper
 nmap <silent> <leader>a <Plug>GreperBangWord\|<C-w>p
 nmap <silent> <leader>A <Plug>GreperBangWORD\|<C-w>p
+nnoremap <C-g> :!G 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
@@ -227,6 +232,12 @@ let g:ctrlp_user_command={
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 set noshowmode
 set laststatus=2
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctags "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set tags=./tags;
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OTHER CONFIG "

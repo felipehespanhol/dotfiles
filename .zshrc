@@ -69,9 +69,7 @@ alias ll='ls -l'
 alias asdf='sudo shutdown -h -P 0'
 
 # Alias trabalho
-alias tclaro='tmuxinator ecommerce-claro'
-alias tesf='tmuxinator exerca-sua-fe'
-alias tatos='tmuxinator atos'
 alias tbvs='tmuxinator bvs_crawler_web'
+alias tdp='tmuxinator default-rproject'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
