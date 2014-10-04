@@ -46,7 +46,6 @@ plugins=(brew git ruby rvm rails tmuxinator vi-mode vundle)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$PATH:/Users/felipehespanhol/.rvm/gems/ruby-1.9.3-p448@test/bin:/Users/felipehespanhol/.rvm/gems/ruby-1.9.3-p448@global/bin:/Users/felipehespanhol/.rvm/rubies/ruby-1.9.3-p448/bin:/Users/felipehespanhol/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/felipehespanhol/.rvm/bin
 #export ruby_configure_flags="--with-readline-dir=/usr/local/Cellar/readline/6.2.4"
 export LANG='pt_BR.UTF-8'
 
@@ -54,6 +53,10 @@ export LANG='pt_BR.UTF-8'
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 [[ -r "$HOME/.rvm/scripts/completion" ]] && . "$HOME/.rvm/scripts/completion" #This adds rvm shell completion
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
 # Tmux config
 # for tmux: export 256color
@@ -72,4 +75,4 @@ alias asdf='sudo shutdown -h -P 0'
 alias tbvs='tmuxinator bvs_crawler_web'
 alias tdp='tmuxinator default-rproject'
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+alias tbar='tmuxinator barganhou'
