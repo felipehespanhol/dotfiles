@@ -72,5 +72,7 @@ alias ll='ls -l'
 alias asdf='sudo shutdown -h -P 0'
 
 # Alias trabalho
-alias tbar='tmuxinator barganhou'
 alias cdb='cd ~/projects/Barganhou.la'
+alias vim='~/Programs/MacVim-snapshot-72/MacVim.app/Contents/MacOS/Vim'
+alias tbar='tmuxinator barganhou'
+alias tnbar='tmuxinator new-barganhou'
