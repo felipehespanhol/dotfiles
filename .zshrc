@@ -76,3 +76,8 @@ alias tbvs='tmuxinator bvs_crawler_web'
 alias tdp='tmuxinator default-rproject'
 
 alias tbar='tmuxinator barganhou'
+
+# Arch linux only
+source /usr/share/doc/pkgfile/command-not-found.zsh
+PATH=$PATH:$HOME/programs/bin # Add RVM to PATH for scripting
+alias wine32="WINEARCH=win32 WINEPREFIX=~/.wine32 primusrun wine"
