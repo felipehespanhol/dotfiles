@@ -11,7 +11,7 @@ filetype indent on
 " let Vundle manage Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
