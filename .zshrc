@@ -55,6 +55,7 @@ export LANG='pt_BR.UTF-8'
 
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+export PATH=$PATH:$HOME/programs/bin # Add RVM to PATH for scripting
 
 # Tmux config
 # for tmux: export 256color
@@ -78,3 +79,9 @@ if [ `uname` = "Darwin" ]; then
 fi
 alias tbar='tmuxinator barganhou'
 alias tnbar='tmuxinator new-barganhou'
+
+# Arch linux only
+if [ `uname` != "Darwin" ]; then
+  source /usr/share/doc/pkgfile/command-not-found.zsh
+  alias wine32="WINEARCH=win32 WINEPREFIX=~/.wine32 primusrun wine"
+fi
