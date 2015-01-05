@@ -10,23 +10,29 @@ filetype indent on
 
 " let Vundle manage Vundle
 set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
-
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'kien/ctrlp.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/greper.vim'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-rails'
-Bundle 'scrooloose/nerdtree'
-Bundle 'dhruvasagar/vim-table-mode'
-Bundle 'godlygeek/tabular'
-Bundle 'Lokaltog/powerline'
-Bundle 'moll/vim-bbye'
+call vundle#begin()
+Plugin 'gmarik/vundle'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'rizzatti/funcoo.vim'
+Plugin 'rizzatti/greper.vim'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-rails'
+Plugin 'scrooloose/nerdtree'
+Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'godlygeek/tabular'
+Plugin 'Lokaltog/powerline'
+Plugin 'moll/vim-bbye'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'szw/vim-tags'
+" Snippets and its dependencies
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+call vundle#end()
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -40,7 +46,7 @@ nmap <leader>v  :edit   $MYVIMRC<CR>
 nmap <leader>sv :source $MYVIMRC<CR>
 
 nnoremap <C-f> :CtrlPFallback<CR>
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>:set number<CR>:set relativenumber<CR>:vertical resize 50<CR>
 
 " Switch buffers with <leader>ea
 map <leader>ea :b#<CR>
@@ -227,6 +233,12 @@ let g:ctrlp_extensions=['quickfix']
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 set noshowmode
 set laststatus=2
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctags "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set tags=./tags;
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OTHER CONFIG "

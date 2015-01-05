@@ -50,10 +50,8 @@ source $ZSH/oh-my-zsh.sh
 export LANG='pt_BR.UTF-8'
 
 # RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
+#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -r "$HOME/.rvm/scripts/completion" ]] && . "$HOME/.rvm/scripts/completion" #This adds rvm shell completion
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -68,11 +66,15 @@ export EDITOR="vim"
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 # Alias geral
-alias ll='ls -l'
 alias asdf='sudo shutdown -h -P 0'
+alias tdp='tmuxinator default-rproject'
 
 # Alias trabalho
-alias cdb='cd ~/projects/Barganhou.la'
-alias vim='~/Programs/MacVim-snapshot-72/MacVim.app/Contents/MacOS/Vim'
+if [ `uname` = "Darwin" ]; then
+  alias ctags="`brew --prefix`/bin/ctags"
+  alias ll='gls -lh --color --group-directories-first'
+  alias git='/usr/local/Cellar/git/2.1.2/bin/git'
+  alias vim='~/Programs/MacVim-snapshot-72/MacVim.app/Contents/MacOS/Vim'
+fi
 alias tbar='tmuxinator barganhou'
 alias tnbar='tmuxinator new-barganhou'
