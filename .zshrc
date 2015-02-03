@@ -50,7 +50,7 @@ source $ZSH/oh-my-zsh.sh
 export LANG='pt_BR.UTF-8'
 
 # RVM
-#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -r "$HOME/.rvm/scripts/completion" ]] && . "$HOME/.rvm/scripts/completion" #This adds rvm shell completion
 
 # Added by the Heroku Toolbelt
@@ -77,8 +77,9 @@ if [ `uname` = "Darwin" ]; then
   alias git='/usr/local/Cellar/git/2.1.2/bin/git'
   alias vim='~/Programs/MacVim-snapshot-72/MacVim.app/Contents/MacOS/Vim'
 fi
-alias tbar='tmuxinator barganhou'
+alias tny='tmuxinator newyoujudge'
 alias tnbar='tmuxinator new-barganhou'
+alias tsicb='tmuxinator sistemaicb'
 
 # Arch linux only
 if [ `uname` != "Darwin" ]; then
