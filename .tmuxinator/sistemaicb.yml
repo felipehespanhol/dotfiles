@@ -1,7 +1,7 @@
 # ~/.tmuxinator/sistemaicb.yml
 
-name: sistemaicb
-root: ~/
+name: SistemaIcb
+root: ~/projects/SistemaICB
 
 # Optional tmux socket
 # socket_name: foo
