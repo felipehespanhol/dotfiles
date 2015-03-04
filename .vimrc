@@ -30,6 +30,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'szw/vim-tags'
 Plugin 'edsono/vim-matchit'
 Plugin 'vim-scripts/HTML-AutoCloseTag'
+"Plugin 'Townk/vim-autoclose'
 " Snippets and its dependencies
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
