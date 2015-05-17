@@ -26,17 +26,21 @@ Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'godlygeek/tabular'
 Plugin 'Lokaltog/powerline'
 Plugin 'moll/vim-bbye'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'szw/vim-tags'
-Plugin 'edsono/vim-matchit'
-Plugin 'vim-scripts/HTML-AutoCloseTag'
-"Plugin 'Townk/vim-autoclose'
+Plugin 'alvan/vim-closetag'
+Plugin 'StanAngeloff/php.vim'
+Plugin 'Raimondi/delimitMate'
 " Snippets and its dependencies
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-call vundle#end()
+Plugin 'honza/vim-snippets'
+" LaTeX
+Plugin 'gerw/vim-latex-suite'
+Plugin 'xuhdev/vim-latex-live-preview'
 
+call vundle#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " REMAPPINGS
@@ -100,7 +104,7 @@ nnoremap <leader>[ lbi[<esc>ea]<esc>lel
 cnoremap w!! w !sudo tee % >/dev/null
 
 " Toggle invisible characters
-map <leader>l :set list!<CR>
+"map <leader>l :set list!<CR>
 
 " WINDOW MANAGEMENT
 
@@ -249,3 +253,17 @@ set tags=./tags;
 
 set backupdir=~/.vim/backup,~/tmp,/var/tmp,/tmp
 set directory=~/.vim/backup,~/tmp,/var/tmp,/tmp
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" LaTeX "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:Tex_CompileRule_dvi='lualatex -interaction=nonstopmode $*'
+let g:Tex_CompileRule_ps='ps2pdf $*'
+let g:Tex_CompileRule_pdf='lualatex -interaction=nonstopmode $*'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim CloseTag "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.erb"

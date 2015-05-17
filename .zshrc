@@ -89,3 +89,5 @@ if [ `uname` != "Darwin" ]; then
   alias wine32cfg="WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg"
   alias wbash='wine ~/.wine/drive_c/Python27/pythonw.exe ~/.wine/drive_c/Steam/SteamApps/common/Oblivion/Mopy/Wrye\ Bash\ Launcher.pyw -o "c:\Steam\SteamApps\common\Oblivion"'
 fi
+
+cdl() { cd $1 && ll }
