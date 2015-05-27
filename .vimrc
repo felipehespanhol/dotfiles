@@ -18,7 +18,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'rizzatti/funcoo.vim'
 Plugin 'rizzatti/greper.vim'
-Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-rails'
 Plugin 'scrooloose/nerdtree'
@@ -31,6 +30,7 @@ Plugin 'szw/vim-tags'
 Plugin 'alvan/vim-closetag'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'Raimondi/delimitMate'
+Plugin 'tpope/vim-endwise'
 " Snippets and its dependencies
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -267,3 +267,10 @@ let g:Tex_CompileRule_pdf='lualatex -interaction=nonstopmode $*'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.erb"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim DelimitMate "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let delimitMate_expand_cr = 2
+
