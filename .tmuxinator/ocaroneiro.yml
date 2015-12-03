@@ -1,0 +1,33 @@
+# ~/.tmuxinator/ocaroneiro.yml
+
+name: ocaroneiro
+root: ~/projects/phonegap_projects/ocaroneiro
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+windows:
+  - server:
+      panes:
+        - ionic serve -l
+        - cd ~/projects/ruby_projects/ocaroneiro-api && rails s
+  - vim-phonegap: vim
+  - vim-ruby: cd ~/projects/ruby_projects/ocaroneiro-api
+  - shell:
+      panes:
+        - 
+        - cd ~/projects/ruby_projects/ocaroneiro-api
+  - console: cd ~/projects/ruby_projects/ocaroneiro-api
+  - tests: cd ~/projects/ruby_projects/ocaroneiro-api
