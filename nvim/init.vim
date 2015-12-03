@@ -1,5 +1,3 @@
-set nocompatible
-
 filetype on
 filetype plugin on
 filetype indent on
@@ -29,7 +27,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-endwise'
-Plug 'slim-template/vim-slim.git'
+Plug 'slim-template/vim-slim'
 " Greper
 Plug 'rizzatti/funcoo.vim'
 Plug 'rizzatti/greper.vim'
@@ -162,8 +160,8 @@ set showbreak=…
 " SCREEN
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set encoding=utf-8
-set fileencoding=utf-8
+"set encoding=utf-8
+"set fileencoding=utf-8
 
 set sidescroll=8
 set scrolloff=8
@@ -204,7 +202,8 @@ set wildignore+=.gitkeep,.DS_Store
 " Toggle paste mode with <leader>p
 set pastetoggle=<leader>p
 function! PasteCB()
-  set paste!
+  set paste
+  set nopaste
 endfunction
 
 " Save/quit typos

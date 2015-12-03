@@ -1,0 +1,42 @@
+snippet ngm
+	var ${1:app} = angular.module('${2}', [${3}]);
+	${4}
+
+snippet ngc
+	${1}.controller('${2}', [${3}, function(${4}) {
+		${5}
+	}])${6}
+
+snippet ngd
+	${1}.directive('${2}', function() {
+		return {
+			${3}
+		};
+	})${4}
+
+snippet ngs
+	${1}.service('${2}', [${3}, function(${4}) {
+		var self = {
+			${5}
+		};
+
+		return self;
+	}])${6}
+
+snippet ngf
+	${1}.filter('${2}', function() {
+		return function(input, param) {
+			${3}
+		};
+	}])${4}
+
+snippet afe
+	angular.forEach(${1}, function(${2}) {
+		${3}
+	})
+	${4}
+
+snippet fn
+	function(${1}) {
+		${2}
+	}
