@@ -81,9 +81,10 @@ fi
 alias tny='tmuxinator newyoujudge'
 alias tnbar='tmuxinator new-barganhou'
 alias tsicb='tmuxinator sistemaicb'
+alias tel='tmuxinator easylive'
 
 # Arch linux only
-if [ `uname` != "Darwin" ]; then
+if [ `whoami` != "fhespanhol" ]; then
   source /usr/share/doc/pkgfile/command-not-found.zsh
   alias wine32="WINEARCH=win32 WINEPREFIX=~/.wine32 primusrun wine"
   alias wine32cfg="WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg"

@@ -1,7 +1,7 @@
-# ~/.tmuxinator/default-rproject.yml
+# ~/.tmuxinator/easylive.yml
 
-name: default-rproject
-root: .
+name: easylive
+root: ~/projects/EasyLive
 
 # Optional tmux socket
 # socket_name: foo
@@ -25,7 +25,7 @@ windows:
       panes:
         - rails s
         - redis-server
-        - sidekiq
+        -
   - vim: vim
   - shell:
   - console: rails c
