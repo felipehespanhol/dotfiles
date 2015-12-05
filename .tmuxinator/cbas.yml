@@ -1,7 +1,7 @@
 # ~/.tmuxinator/default-rproject.yml
 
 name: default-rproject
-root: .
+root: ~/projects/ruby_projects/comebuyautospares
 
 # Optional tmux socket
 # socket_name: foo
@@ -19,13 +19,7 @@ root: .
 # tmux_command: byobu
 
 windows:
-  - server:
-      #layout: c03f,211x58,0,0{121x58,0,0,0,89x58,122,0[89x29,122,0,5,89x28,122,30,8]}
-      layout: 7218,211x58,0,0{123x58,0,0,0,87x58,124,0[87x29,124,0,5,87x28,124,30,6]}
-      panes:
-        - rails s
-        - redis-server
-        - sidekiq
+  - server: rails s
   - vim: vim
   - shell:
   - console: rails c
