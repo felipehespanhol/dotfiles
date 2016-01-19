@@ -29,7 +29,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-endwise'
-Plug 'slim-template/vim-slim.git'
+Plug 'https://github.com/slim-template/vim-slim.git'
 " Greper
 Plug 'rizzatti/funcoo.vim'
 Plug 'rizzatti/greper.vim'
@@ -153,7 +153,7 @@ set expandtab "convert tabs to spaces
 set smarttab
 
 set backspace=indent,eol,start
-set listchars=tab:▸\ ,eol:¬,trail:·,precedes:«,extends:»
+set listchars=tab:▸▸,eol:¬,trail:·,precedes:«,extends:»
 "set textwidth=80
 set linebreak
 set showbreak=…

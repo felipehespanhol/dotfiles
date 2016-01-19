@@ -82,10 +82,11 @@ alias tny='tmuxinator newyoujudge'
 alias tnbar='tmuxinator new-barganhou'
 alias tsicb='tmuxinator sistemaicb'
 alias tel='tmuxinator easylive'
+alias tcbas='tmuxinator cbas'
 
 # Arch linux only
 if [ `whoami` != "fhespanhol" ]; then
-  source /usr/share/doc/pkgfile/command-not-found.zsh
+  #source /usr/share/doc/pkgfile/command-not-found.zsh
   alias wine32="WINEARCH=win32 WINEPREFIX=~/.wine32 primusrun wine"
   alias wine32cfg="WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg"
   alias wbash='wine ~/.wine/drive_c/Python27/pythonw.exe ~/.wine/drive_c/Steam/SteamApps/common/Oblivion/Mopy/Wrye\ Bash\ Launcher.pyw -o "c:\Steam\SteamApps\common\Oblivion"'

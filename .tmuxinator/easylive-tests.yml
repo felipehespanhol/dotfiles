@@ -1,6 +1,6 @@
-# ~/.tmuxinator/easylive.yml
+# ~/.tmuxinator/easylive-tests.yml
 
-name: easylive
+name: easylive-tests
 root: ~/projects/EasyLive
 
 # Optional tmux socket
@@ -18,12 +18,19 @@ root: ~/projects/EasyLive
 # Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
 # tmux_command: byobu
 
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: logs
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+# post: tmux -CC attach -t easylive2
+
 windows:
-  - server:
-      #layout: c03f,211x58,0,0{121x58,0,0,0,89x58,122,0[89x29,122,0,5,89x28,122,30,8]}
-      layout: 7218,211x58,0,0{123x58,0,0,0,87x58,124,0[87x29,124,0,5,87x28,124,30,6]}
+  - tests:
+      layout: 55c9,211x58,0,0{127x58,0,0,0,83x58,128,0[83x29,128,0,3,83x28,128,30,4]}
       panes:
-        - rails s
-        - redis-server
-        - sidekiq
-  - vim: vim
+        - guard
+        - rails c
+        - 
