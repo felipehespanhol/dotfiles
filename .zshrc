@@ -41,18 +41,23 @@ export DISABLE_AUTO_TITLE=true
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew git ruby rvm rails tmuxinator vi-mode vundle)
+plugins=(brew git ruby rbenv rails tmuxinator vi-mode vundle)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 #export ruby_configure_flags="--with-readline-dir=/usr/local/Cellar/readline/6.2.4"
-export LANG='pt_BR.UTF-8'
+#export LANG='pt_BR.UTF-8'
 
 # RVM
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -r "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" #This adds rvm shell completion
-[[ -r "$HOME/.rvm/scripts/completion" ]] && . "$HOME/.rvm/scripts/completion" #This adds rvm shell completion
+#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+#[[ -r "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" #This adds rvm shell completion
+#[[ -r "$HOME/.rvm/scripts/completion" ]] && . "$HOME/.rvm/scripts/completion" #This adds rvm shell completion
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+#RBENV_VERSION='2.3.0'
 
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -70,18 +75,11 @@ export EDITOR="vim"
 # Alias geral
 alias asdf='sudo shutdown -h -P 0'
 alias tdp='tmuxinator default-rproject'
+alias civ5="cd /home/felipe/.local/share/Steam/steamapps/common/Sid\ Meier\'s\ Civilization\ V && ./Civ5XP"
 
 # Alias trabalho
-if [ `uname` = "Darwin" ]; then
-  alias ctags="`brew --prefix`/bin/ctags"
-  alias ll='gls -lh --color --group-directories-first'
-  alias git='/usr/local/Cellar/git/2.1.2/bin/git'
-  alias vim='~/Programs/MacVim-snapshot-72/MacVim.app/Contents/MacOS/Vim'
-fi
-alias tny='tmuxinator newyoujudge'
-alias tnbar='tmuxinator new-barganhou'
-alias tsicb='tmuxinator sistemaicb'
 alias tel='tmuxinator easylive'
+alias telt='tmuxinator easylive-tests'
 alias tcbas='tmuxinator cbas'
 
 # Arch linux only
@@ -92,4 +90,8 @@ if [ `whoami` != "fhespanhol" ]; then
   alias wbash='wine ~/.wine/drive_c/Python27/pythonw.exe ~/.wine/drive_c/Steam/SteamApps/common/Oblivion/Mopy/Wrye\ Bash\ Launcher.pyw -o "c:\Steam\SteamApps\common\Oblivion"'
 fi
 
-cdl() { cd $1 && ll }
+# PCrawler
+export PATH="$HOME/projects/pcrawler/bin:$PATH"
+
+# General scripts
+export PATH="$HOME/scripts:$PATH"

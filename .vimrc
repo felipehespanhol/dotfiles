@@ -19,7 +19,8 @@ Plug 'Raimondi/delimitMate'
 Plug 'alvan/vim-closetag'
 " UI
 Plug 'altercation/vim-colors-solarized'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 " Tags
 Plug 'szw/vim-tags'
@@ -29,10 +30,14 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-endwise'
+Plug 'thoughtbot/vim-rspec'
 Plug 'https://github.com/slim-template/vim-slim.git'
 " Greper
-Plug 'rizzatti/funcoo.vim'
-Plug 'rizzatti/greper.vim'
+"Plug 'rizzatti/funcoo.vim'
+"Plug 'rizzatti/greper.vim'
+" The Silver Searcher
+Plug 'rking/ag.vim'
+Plug 'Chun-Yang/vim-action-ag'
 " Snippets and its dependencies
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
@@ -41,6 +46,8 @@ Plug 'honza/vim-snippets'
 " LaTeX
 Plug 'gerw/vim-latex-suite'
 Plug 'xuhdev/vim-latex-live-preview'
+" Elixir
+Plug 'elixir-lang/vim-elixir'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -53,27 +60,35 @@ let mapleader=","
 nmap <leader>v  :edit   $MYVIMRC<CR>
 nmap <leader>sv :source $MYVIMRC<CR>
 
+" %% as current dir
+cnoremap %% <C-R>=expand("%:h")."/"<CR>
+
+" %f as current file
+cnoremap %f <C-R>=expand("%")<CR>
+
+function! NERDTreeExpand()
+  if expand("%") == ""
+    NERDTreeToggle
+  else
+    NERDTreeToggle %
+  endif
+endfunction
+nnoremap <C-n> :call NERDTreeExpand()<CR>:set relativenumber<CR>
+
 nnoremap <C-f> :CtrlPFallback<CR>
-nnoremap <C-n> :NERDTreeToggle<CR>:setlocal relativenumber<CR>
 ":vertical resize 50<CR>
 
 " Switch buffers with <leader>ea
 map <leader>ea :b#<CR>
 nmap <F12> :bn<CR>
 nmap <F10> :bp<CR>
-nmap <F4> :Bdelete<CR>
+nmap <F4> :%bdelete<CR>
 
 if &t_Co > 2 || has("gui_running")
   syntax enable
   set hlsearch
   nmap <silent> <leader>h :silent :nohlsearch<CR>
 endif
-
-" %% as current dir
-cnoremap %% <C-R>=expand("%:h")."/"<CR>
-
-" %f as current file
-cnoremap %f <C-R>=expand("%")<CR>
 
 " Clear the search buffer when hitting return
 nnoremap <cr> :nohlsearch<cr>:redraw!<cr>
@@ -126,9 +141,16 @@ noremap <C-l> <C-w>l
 nnoremap gr :tabprevious<CR>
 
 " Greper
-nmap <silent> <leader>a <Plug>GreperBangWord\|<C-w>p
-nmap <silent> <leader>A <Plug>GreperBangWORD\|<C-w>p
-nmap <C-g> :G! 
+"nmap <silent> <leader>a <Plug>GreperBangWord\|<C-w>p
+"nmap <silent> <leader>A <Plug>GreperBangWORD\|<C-w>p
+nmap <leader>a <Plug>AgActionWord
+vmap <leader>a <Plug>AgActionVisual
+nnoremap <C-g> :Ag! 
+
+let g:vim_action_ag_escape_chars = '#%.^$*+?()[{\\|'
+
+" RSpec
+map <Leader>t :call RunCurrentSpecFile()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
@@ -146,10 +168,10 @@ endif
 " TAB SPACING/SIZE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set tabstop=2 "number of spaces on tab
-set shiftwidth=2 "number of spaces to ident
+set tabstop=2     "number of spaces on tab
+set shiftwidth=2  "number of spaces to ident
 set softtabstop=2
-set expandtab "convert tabs to spaces
+set expandtab     "convert tabs to spaces
 set smarttab
 
 set backspace=indent,eol,start

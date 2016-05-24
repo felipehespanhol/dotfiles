@@ -28,9 +28,5 @@ root: ~/projects/EasyLive
 # post: tmux -CC attach -t easylive2
 
 windows:
-  - tests:
-      layout: 55c9,211x58,0,0{127x58,0,0,0,83x58,128,0[83x29,128,0,3,83x28,128,30,4]}
-      panes:
-        - guard
-        - rails c
-        - 
+  - tests: bundle exec guard
+  - yard: yard server -g
