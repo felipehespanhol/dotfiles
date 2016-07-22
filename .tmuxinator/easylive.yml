@@ -1,7 +1,7 @@
 # ~/.tmuxinator/easylive.yml
 
 name: easylive
-root: ~/projects/EasyLive
+root: ~/projects/ruby_projects/EasyLive
 
 # Optional tmux socket
 # socket_name: foo
