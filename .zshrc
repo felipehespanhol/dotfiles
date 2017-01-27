@@ -41,19 +41,12 @@ export DISABLE_AUTO_TITLE=true
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew git ruby rbenv rails tmuxinator vi-mode vundle zsh-autosuggestions)
+plugins=(git ruby rails tmuxinator vi-mode vundle zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-# RVM
-#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-#[[ -r "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" #This adds rvm shell completion
-#[[ -r "$HOME/.rvm/scripts/completion" ]] && . "$HOME/.rvm/scripts/completion" #This adds rvm shell completion
-
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-#RBENV_VERSION='2.3.0'
+# Auto Suggestions style
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=red'
 
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
