@@ -41,13 +41,9 @@ export DISABLE_AUTO_TITLE=true
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew git ruby rbenv rails tmuxinator vi-mode vundle)
+plugins=(brew git ruby rbenv rails tmuxinator vi-mode vundle zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
-#export ruby_configure_flags="--with-readline-dir=/usr/local/Cellar/readline/6.2.4"
-#export LANG='pt_BR.UTF-8'
 
 # RVM
 #export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
@@ -73,22 +69,9 @@ export EDITOR="vim"
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 # Alias geral
-alias asdf='sudo shutdown -h -P 0'
 alias tdp='tmuxinator default-rproject'
-alias civ5="cd /home/felipe/.local/share/Steam/steamapps/common/Sid\ Meier\'s\ Civilization\ V && ./Civ5XP"
 
 # Alias trabalho
-alias tel='tmuxinator easylive'
-alias telt='tmuxinator easylive-tests'
-alias tcbas='tmuxinator cbas'
-
-# Arch linux only
-if [ `whoami` != "fhespanhol" ]; then
-  #source /usr/share/doc/pkgfile/command-not-found.zsh
-  alias wine32="WINEARCH=win32 WINEPREFIX=~/.wine32 primusrun wine"
-  alias wine32cfg="WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg"
-  alias wbash='wine ~/.wine/drive_c/Python27/pythonw.exe ~/.wine/drive_c/Steam/SteamApps/common/Oblivion/Mopy/Wrye\ Bash\ Launcher.pyw -o "c:\Steam\SteamApps\common\Oblivion"'
-fi
 
 # PCrawler
 export PATH="$HOME/projects/pcrawler/bin:$PATH"
