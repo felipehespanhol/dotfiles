@@ -25,7 +25,10 @@ windows:
       layout: f920,193x53,0,0{114x53,0,0,0,78x53,115,0,5}
       panes:
         - rails s
-        - redis-server > /dev/null; bundle exec sidekiq -q default -q mailers
+        # Fish syntax
+        #- redis-server > /dev/null; bundle exec sidekiq -q default -q mailers
+        # Zsh syntax
+        - redis-server &> /dev/null & bundle exec sidekiq -q default -q mailers
   - vim: vim
   - shell:
   - console: rails c
