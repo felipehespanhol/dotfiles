@@ -41,6 +41,7 @@ export DISABLE_AUTO_TITLE=true
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
+
 plugins=(git ruby rails tmuxinator vi-mode vundle zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
@@ -63,6 +64,7 @@ export EDITOR="vim"
 
 # Alias geral
 alias tdp='tmuxinator default-rproject'
+alias gdc="git diff --cached"
 
 # Alias trabalho
 

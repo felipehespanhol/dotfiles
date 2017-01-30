@@ -22,10 +22,10 @@ windows:
   - server:
       #layout: c03f,211x58,0,0{121x58,0,0,0,89x58,122,0[89x29,122,0,5,89x28,122,30,8]}
       #layout: 7218,211x58,0,0{123x58,0,0,0,87x58,124,0[87x29,124,0,5,87x28,124,30,6]}
-      layout: 0930,199x51,0,0{119x51,0,0,0,79x51,120,0,6}
+      layout: f920,193x53,0,0{114x53,0,0,0,78x53,115,0,5}
       panes:
         - rails s
-        - redis-server &> /dev/null & bundle exec sidekiq -q default
+        - redis-server > /dev/null; bundle exec sidekiq -q default -q mailers
   - vim: vim
   - shell:
   - console: rails c

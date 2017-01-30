@@ -22,6 +22,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
+Plug 'Yggdroot/indentLine'
 " Tags
 Plug 'szw/vim-tags'
 Plug 'majutsushi/tagbar'
@@ -161,6 +162,7 @@ let s:uname = system("echo -n \"$(uname)\"")
 if !v:shell_error && s:uname =~ "Darwin"
   set background=light
 else
+  "set background=light
   set background=dark
 endif
 
@@ -249,6 +251,11 @@ command! -nargs=* Wrap set wrap linebreak nolist
 " Open buffer with <C-B>
 nmap <C-B> :CtrlPBuffer<cr>
 let g:ctrlp_custom_ignore='\.git$\|\.pdf$|.log$'
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn)|vendor\/assets\/components$',
+    \ 'file': '\v\.(exe|so|dll)$',
+    \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+    \ }
 let g:ctrlp_use_caching = 0
 let g:ctrlp_max_height=5
 let g:ctrlp_extensions=['quickfix']
