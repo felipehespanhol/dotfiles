@@ -73,3 +73,7 @@ export PATH="$HOME/projects/pcrawler/bin:$PATH"
 
 # General scripts
 export PATH="$HOME/scripts:$PATH"
+
+# Asdf config
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
