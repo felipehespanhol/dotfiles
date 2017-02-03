@@ -41,12 +41,13 @@ export DISABLE_AUTO_TITLE=true
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby rails tmuxinator vi-mode vundle zsh-autosuggestions)
+plugins=(git ruby rails tmuxinator vi-mode vundle globalias zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
 # Auto Suggestions style
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=red'
+# On error download zsh-autosuggestions at git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -63,6 +64,7 @@ export EDITOR="vim"
 
 # Alias geral
 alias tdp='tmuxinator default-rproject'
+alias be='bundle exec'
 
 # Alias trabalho
 
@@ -71,3 +73,7 @@ export PATH="$HOME/projects/pcrawler/bin:$PATH"
 
 # General scripts
 export PATH="$HOME/scripts:$PATH"
+
+# Asdf Version manager
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
