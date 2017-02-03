@@ -65,6 +65,7 @@ export EDITOR="vim"
 # Alias geral
 alias tdp='tmuxinator default-rproject'
 alias be='bundle exec'
+alias gdc="git diff --cached"
 
 # Alias trabalho
 
@@ -74,6 +75,6 @@ export PATH="$HOME/projects/pcrawler/bin:$PATH"
 # General scripts
 export PATH="$HOME/scripts:$PATH"
 
-# Asdf Version manager
+# Asdf config
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
