@@ -31,6 +31,6 @@ root: .
 # post: tmux -CC attach -t ionic-project
 
 windows:
-  - server: ionic server
+  - server: ionic serve
   - vim: vim
   - shell: 
