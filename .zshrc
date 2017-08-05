@@ -78,3 +78,6 @@ export PATH="$HOME/scripts:$PATH"
 # Asdf config
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+# Android
+export ANDROID_HOME=/opt/android-sdk
