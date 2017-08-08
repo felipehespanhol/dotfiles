@@ -52,6 +52,9 @@ Plug 'xuhdev/vim-latex-live-preview'
 Plug 'elixir-lang/vim-elixir'
 " Typescript
 Plug 'leafgarland/typescript-vim'
+Plug 'akz92/vim-ionic2'
+Plug 'matthewsimo/angular-vim-snippets'
+
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -162,6 +165,7 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 set t_Co=256
 colorscheme solarized
 let s:uname = system("echo -n \"$(uname)\"")
+
 "set background=dark
 set background=light
 

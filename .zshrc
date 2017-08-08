@@ -63,6 +63,8 @@ export EDITOR="vim"
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 # Alias geral
+alias ta='tmux attach'
+alias tat='tmux attach -t'
 alias tdp='tmuxinator default-rproject'
 alias tip='tmuxinator ionic-project'
 alias be='bundle exec'
