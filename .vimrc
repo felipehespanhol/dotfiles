@@ -166,8 +166,8 @@ set t_Co=256
 colorscheme solarized
 let s:uname = system("echo -n \"$(uname)\"")
 
-"set background=dark
-set background=light
+set background=dark
+"set background=light
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TAB SPACING/SIZE

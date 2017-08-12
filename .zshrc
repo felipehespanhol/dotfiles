@@ -63,6 +63,7 @@ export EDITOR="vim"
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 # Alias geral
+alias tls='tmux list-session'
 alias ta='tmux attach'
 alias tat='tmux attach -t'
 alias tdp='tmuxinator default-rproject'
