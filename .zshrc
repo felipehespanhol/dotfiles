@@ -70,6 +70,7 @@ alias tdp='tmuxinator default-rproject'
 alias tip='tmuxinator ionic-project'
 alias be='bundle exec'
 alias gdc="git diff --cached"
+alias open="xdg-open"
 
 # Alias trabalho
 
