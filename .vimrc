@@ -29,6 +29,7 @@ Plug 'majutsushi/tagbar'
 " Rails
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-haml'
+Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-endwise'
 Plug 'thoughtbot/vim-rspec'
@@ -44,11 +45,14 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
+Plug 'felipehespanhol/vim-phaser-snippets'
 " LaTeX
 Plug 'gerw/vim-latex-suite'
 Plug 'xuhdev/vim-latex-live-preview'
 " Elixir
 Plug 'elixir-lang/vim-elixir'
+" Typescript
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -256,7 +260,7 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\v\.(exe|so|dll)$',
     \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
     \ }
-let g:ctrlp_use_caching = 0
+let g:ctrlp_use_caching = 20000
 let g:ctrlp_max_height=5
 let g:ctrlp_extensions=['quickfix']
 
@@ -272,6 +276,7 @@ set tags=./tags;
 
 set backupdir=~/.vim/backup,~/tmp,/var/tmp,/tmp
 set directory=~/.vim/backup,~/tmp,/var/tmp,/tmp
+runtime macros/matchit.vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LaTeX "
