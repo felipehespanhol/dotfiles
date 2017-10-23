@@ -53,6 +53,9 @@ Plug 'xuhdev/vim-latex-live-preview'
 Plug 'elixir-lang/vim-elixir'
 " Typescript
 Plug 'leafgarland/typescript-vim'
+Plug 'akz92/vim-ionic2'
+Plug 'matthewsimo/angular-vim-snippets'
+
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -163,12 +166,9 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 set t_Co=256
 colorscheme solarized
 let s:uname = system("echo -n \"$(uname)\"")
-if !v:shell_error && s:uname =~ "Darwin"
-  set background=light
-else
-  "set background=light
-  set background=dark
-endif
+
+set background=dark
+"set background=light
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TAB SPACING/SIZE

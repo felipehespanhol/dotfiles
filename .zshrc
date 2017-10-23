@@ -63,9 +63,14 @@ export EDITOR="vim"
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 # Alias geral
+alias tls='tmux list-session'
+alias ta='tmux attach'
+alias tat='tmux attach -t'
 alias tdp='tmuxinator default-rproject'
+alias tip='tmuxinator ionic-project'
 alias be='bundle exec'
 alias gdc="git diff --cached"
+alias open="xdg-open"
 
 # Alias trabalho
 
@@ -78,3 +83,6 @@ export PATH="$HOME/scripts:$PATH"
 # Asdf config
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+# Android
+export ANDROID_HOME=/opt/android-sdk
