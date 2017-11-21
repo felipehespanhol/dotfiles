@@ -1,0 +1,37 @@
+
+# RSpec context
+snippet context
+	context '${1:context}' do
+		${0}
+	end
+
+# Create controller spec
+snippet rcon
+	require 'rails_helper'
+
+	RSpec.describe ${1:Products}Controller, type: :controller do
+		render_views
+
+		${0}
+	end
+
+# Create model spec
+snippet rmodel
+	require 'rails_helper'
+
+	RSpec.describe ${1:Product}, type: :model do
+		${0}
+	end
+
+# Create routing spec
+snippet rrouting
+	require 'rails_helper'
+
+	RSpec.describe ${1:Products}Controller, type: :routing do
+		describe 'routing' do
+			it 'routes ${2:GET|PATCH|POST|DELETE} /${3:url} to ${4:controller}#${5:action}' do
+				expect(${6:get|patch|post|delete}: "${7:url}").to route_to("${8:controller}#${9:action}")
+			end
+			${0}
+		end
+	end
