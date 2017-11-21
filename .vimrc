@@ -165,6 +165,7 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256
 colorscheme solarized
+"colorscheme pablo
 let s:uname = system("echo -n \"$(uname)\"")
 
 set background=dark
@@ -260,7 +261,7 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\v\.(exe|so|dll)$',
     \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
     \ }
-let g:ctrlp_use_caching = 20000
+let g:ctrlp_use_caching = 5000
 let g:ctrlp_max_height=5
 let g:ctrlp_extensions=['quickfix']
 
@@ -308,3 +309,10 @@ au FileType html let b:delimitMate_matchpairs = "(:),[:],{:}"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:airline_powerline_fonts = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Config Linters "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+
