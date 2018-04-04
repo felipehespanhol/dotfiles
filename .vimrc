@@ -18,7 +18,7 @@ Plug 'StanAngeloff/php.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'alvan/vim-closetag'
 " UI
-Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
@@ -163,12 +163,14 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set t_Co=256
-colorscheme solarized
-let s:uname = system("echo -n \"$(uname)\"")
 
+set t_Co=256
+let g:solarized_use16 = 1
 "set background=dark
 set background=light
+colorscheme solarized8
+
+let s:uname = system("echo -n \"$(uname)\"")
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TAB SPACING/SIZE
@@ -192,6 +194,7 @@ set showbreak=…
 
 set encoding=utf-8
 set fileencoding=utf-8
+scriptencoding utf-8
 
 set sidescroll=8
 set scrolloff=8
@@ -308,3 +311,10 @@ au FileType html let b:delimitMate_matchpairs = "(:),[:],{:}"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:airline_powerline_fonts = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Config Linters "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+
