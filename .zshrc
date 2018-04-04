@@ -51,7 +51,12 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=red'
 
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-export PATH=$PATH:$HOME/programs/bin # Add RVM to PATH for scripting
+export PATH=$PATH:$HOME/programs/bin
+
+# Android
+#export ANDROID_HOME=/opt/android-sdk
+export ANDROID_HOME=/home/felipe/AndroidSDKs
+export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_HOME/build-tools
 
 # Tmux config
 # for tmux: export 256color
@@ -84,5 +89,3 @@ export PATH="$HOME/scripts:$PATH"
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
-# Android
-export ANDROID_HOME=/opt/android-sdk
