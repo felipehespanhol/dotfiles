@@ -55,6 +55,8 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'leafgarland/typescript-vim'
 Plug 'akz92/vim-ionic2'
 Plug 'matthewsimo/angular-vim-snippets'
+" VueJS
+Plug 'posva/vim-vue'
 
 call plug#end()
 
@@ -216,10 +218,12 @@ set shortmess=atI
 set timeoutlen=500
 set wrap
 "set wrapmargin=80
+set colorcolumn=80
 set visualbell "no crazy beeping
 set hidden
 set title
 set cc=+1
+set mouse=a
 
 " Custom
 set splitbelow
