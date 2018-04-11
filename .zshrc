@@ -78,6 +78,8 @@ alias gdc="git diff --cached"
 alias open="xdg-open"
 
 # Alias trabalho
+alias lemoney="tmuxinator start lemoney"
+alias lemoneyadmin="tmuxinator start lemoneyadmin"
 
 # PCrawler
 export PATH="$HOME/projects/pcrawler/bin:$PATH"
