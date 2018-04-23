@@ -67,6 +67,10 @@ export TERM="xterm-256color"
 export EDITOR="vim"
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
+# NPM config
+PATH="$HOME/.node_modules/bin:$PATH"
+export npm_config_prefix=~/.node_modules
+
 # Alias geral
 alias tls='tmux list-session'
 alias ta='tmux attach'
