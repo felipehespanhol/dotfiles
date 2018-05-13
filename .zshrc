@@ -95,3 +95,10 @@ export PATH="$HOME/scripts:$PATH"
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
+# Android
+#export ANDROID_HOME=/opt/android-sdk
+export ANDROID_HOME=~/Android/Sdk
+export JAVA_HOME=/usr/lib/jvm/java-8-jdk
+
+# Launchy
+export BROWSER=/usr/bin/firefox
