@@ -10,16 +10,23 @@ filetype indent on
 " Install it with
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
-Plug 'kien/ctrlp.vim'
+" File Search
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'dhruvasagar/vim-table-mode'
+" Draw tables
 Plug 'godlygeek/tabular'
-Plug 'moll/vim-bbye'
-Plug 'StanAngeloff/php.vim'
+" Dealing with quotes, parenthesis, tags, etc...
 Plug 'Raimondi/delimitMate'
 Plug 'alvan/vim-closetag'
+Plug 'tpope/vim-surround'
+" Comments
+Plug 'scrooloose/nerdcommenter'
+" PHP
+Plug 'StanAngeloff/php.vim'
 " UI
 Plug 'lifepillar/vim-solarized8'
+Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
@@ -86,7 +93,6 @@ function! NERDTreeExpand()
 endfunction
 nnoremap <C-n> :call NERDTreeExpand()<CR>:set relativenumber<CR>
 
-nnoremap <C-f> :CtrlPFallback<CR>
 ":vertical resize 50<CR>
 
 " Switch buffers with <leader>ea
@@ -106,12 +112,27 @@ nnoremap <cr> :nohlsearch<cr>:redraw!<cr>
 nnoremap <leader><leader> ^
 
 " Tabular
-if exists(":Tabularize")
+"if exists(":Tabularize")
   nnoremap <leader>t= :Tabularize /=<CR>
   vnoremap <leader>t= :Tabularize /=<CR>
   nnoremap <leader>t: :Tabularize /:\zs<CR>
   vnoremap <leader>t: :Tabularize /:\zs<CR>
-endif
+  nnoremap <leader>t> :Tabularize /=><CR>
+  vnoremap <leader>t> :Tabularize /=><CR>
+"endif
+
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.', position),'ce',line('.'))
+  endif
+endfunction
 
 " Toggle absolute/relative line number
 map <leader>r :set number!<CR>:set relativenumber!<cr>
@@ -167,11 +188,16 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 " COLORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set t_Co=256
-let g:solarized_use16 = 1
-set background=dark
-"set background=light
-colorscheme solarized8
+" Solarized8
+"set t_Co=256
+"let g:solarized_use16 = 1
+"colorscheme solarized8
+
+" Old Solarized
+colorscheme solarized
+
+"set background=dark
+set background=light
 
 let s:uname = system("echo -n \"$(uname)\"")
 
@@ -257,19 +283,27 @@ autocmd BufReadPost *
 command! -nargs=* Wrap set wrap linebreak nolist
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDCommenter
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:NERDSpaceDelims = 1
+let g:NERDTrimTrailingWhitespace = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Open buffer with <C-B>
 nmap <C-B> :CtrlPBuffer<cr>
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_custom_ignore='\.git$\|\.pdf$|.log$'
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn)|vendor\/assets\/components$',
     \ 'file': '\v\.(exe|so|dll)$',
     \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
     \ }
-let g:ctrlp_use_caching = 5000
-let g:ctrlp_max_height=5
+let g:ctrlp_use_caching = 10000
+"let g:ctrlp_max_height=5
 let g:ctrlp_extensions=['quickfix']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

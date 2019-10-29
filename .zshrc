@@ -80,10 +80,16 @@ alias tip='tmuxinator ionic-project'
 alias be='bundle exec'
 alias gdc="git diff --cached"
 alias open="xdg-open"
+alias transep="trans -p en:pt"
+alias transpe="trans -p pt:en"
+alias transesp="trans -p es:pt"
+alias transpes="trans -p pt:es"
+alias psg="ps aux | grep"
 
 # Alias trabalho
-alias lemoney="tmuxinator start lemoney"
-alias lemoneyadmin="tmuxinator start lemoneyadmin"
+function clch() {
+  echo "scale=2;$1/60" | bc
+}
 
 # PCrawler
 export PATH="$HOME/projects/pcrawler/bin:$PATH"
