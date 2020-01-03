@@ -20,6 +20,9 @@ Plug 'godlygeek/tabular'
 Plug 'Raimondi/delimitMate'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-ragtag'
+
 " Comments
 Plug 'scrooloose/nerdcommenter'
 " React
@@ -356,8 +359,7 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.erb,*.vue"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let delimitMate_expand_cr = 2
-au FileType html let b:delimitMate_matchpairs = "(:),[:],{:}"
-let delimitMate_excluded_ft = "html,vue"
+au FileType html,vue let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Snipmate "
