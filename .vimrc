@@ -22,6 +22,8 @@ Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
 " Comments
 Plug 'scrooloose/nerdcommenter'
+" React
+Plug 'MaxMEllon/vim-jsx-pretty'
 " PHP
 Plug 'StanAngeloff/php.vim'
 " UI
@@ -201,6 +203,21 @@ set background=light
 
 let s:uname = system("echo -n \"$(uname)\"")
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tmuxline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"let g:tmuxline_preset = 'nightly_fox'
+let g:tmuxline_preset = {
+      \'a'    : '#H',
+      \'b'    : '#S',
+      \'c'    : '#W',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'x'    : '%a',
+      \'y'    : '%R',
+      \'z'    : 'BAT #(cat /sys/class/power_supply/BAT0/capacity)%'}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TAB SPACING/SIZE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -332,7 +349,7 @@ let g:Tex_CompileRule_pdf='lualatex -interaction=nonstopmode $*'
 " Vim CloseTag "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.erb"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.erb,*.vue"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim DelimitMate "
@@ -340,10 +357,15 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.erb"
 
 let delimitMate_expand_cr = 2
 au FileType html let b:delimitMate_matchpairs = "(:),[:],{:}"
+let delimitMate_excluded_ft = "html,vue"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Snipmate "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['javascript'] = 'javascript,html'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Airline "
