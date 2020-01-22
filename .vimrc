@@ -315,16 +315,19 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Open buffer with <C-B>
 nmap <C-B> :CtrlPBuffer<cr>
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_custom_ignore='\.git$\|\.pdf$|.log$'
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn)|vendor\/assets\/components$',
     \ 'file': '\v\.(exe|so|dll)$',
     \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
     \ }
-let g:ctrlp_use_caching = 10000
+let g:ctrlp_use_caching = 30000
 "let g:ctrlp_max_height=5
-let g:ctrlp_extensions=['quickfix']
+"let g:ctrlp_extensions=['quickfix']
+"let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+if executable('rg')
+  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctags "
