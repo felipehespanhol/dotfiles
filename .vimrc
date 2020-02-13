@@ -10,12 +10,15 @@ filetype indent on
 " Install it with
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
+
 " File Search
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'dhruvasagar/vim-table-mode'
+
 " Draw tables
 Plug 'godlygeek/tabular'
+
 " Dealing with quotes, parenthesis, tags, etc...
 Plug 'Raimondi/delimitMate'
 Plug 'alvan/vim-closetag'
@@ -25,10 +28,13 @@ Plug 'tpope/vim-ragtag'
 
 " Comments
 Plug 'scrooloose/nerdcommenter'
+
 " React
 Plug 'MaxMEllon/vim-jsx-pretty'
+
 " PHP
 Plug 'StanAngeloff/php.vim'
+
 " UI
 Plug 'lifepillar/vim-solarized8'
 Plug 'altercation/vim-colors-solarized'
@@ -36,9 +42,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'Yggdroot/indentLine'
+
 " Tags
 Plug 'szw/vim-tags'
 Plug 'majutsushi/tagbar'
+
 " Rails
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-haml'
@@ -47,29 +55,38 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-endwise'
 Plug 'thoughtbot/vim-rspec'
 Plug 'https://github.com/slim-template/vim-slim.git'
+
 " Greper
 "Plug 'rizzatti/funcoo.vim'
 "Plug 'rizzatti/greper.vim'
 " The Silver Searcher
 Plug 'rking/ag.vim'
 Plug 'Chun-Yang/vim-action-ag'
+
 " Snippets and its dependencies
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'felipehespanhol/vim-phaser-snippets'
+
 " LaTeX
 Plug 'gerw/vim-latex-suite'
 Plug 'xuhdev/vim-latex-live-preview'
+
 " Elixir
 Plug 'elixir-lang/vim-elixir'
+
 " Typescript
 Plug 'leafgarland/typescript-vim'
 Plug 'akz92/vim-ionic2'
 Plug 'matthewsimo/angular-vim-snippets'
+
 " VueJS
 Plug 'posva/vim-vue'
+
+" Linting
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -384,3 +401,12 @@ let g:airline_powerline_fonts = 1
 
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 
+" Set specific linters
+let g:ale_linters = {
+ \   'javascript': ['eslint'],
+ \   'ruby': ['rubocop']
+ \}
+let g:ale_linters_explicit = 1
+let g:airline#extensions#ale#enabled = 1
+"let g:ale_sign_column_always = 1
+let g:ale_set_highlights = 0
