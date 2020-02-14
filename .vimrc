@@ -14,7 +14,7 @@ call plug#begin('~/.vim/plugged')
 " File Search
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'dhruvasagar/vim-table-mode'
+Plug 'dhruvasagar/vim-table-mode' " use <leader>tm to toggle it
 
 " Draw tables
 Plug 'godlygeek/tabular'
