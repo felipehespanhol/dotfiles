@@ -32,9 +32,6 @@ Plug 'scrooloose/nerdcommenter'
 " React
 Plug 'MaxMEllon/vim-jsx-pretty'
 
-" PHP
-Plug 'StanAngeloff/php.vim'
-
 " UI
 Plug 'lifepillar/vim-solarized8'
 Plug 'altercation/vim-colors-solarized'
@@ -46,15 +43,6 @@ Plug 'Yggdroot/indentLine'
 " Tags
 Plug 'szw/vim-tags'
 Plug 'majutsushi/tagbar'
-
-" Rails
-Plug 'kchmck/vim-coffee-script'
-Plug 'tpope/vim-haml'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-endwise'
-Plug 'thoughtbot/vim-rspec'
-Plug 'https://github.com/slim-template/vim-slim.git'
 
 " Greper
 "Plug 'rizzatti/funcoo.vim'
@@ -72,10 +60,25 @@ Plug 'felipehespanhol/vim-phaser-snippets'
 
 " LaTeX
 Plug 'gerw/vim-latex-suite'
-Plug 'xuhdev/vim-latex-live-preview'
+"Plug 'xuhdev/vim-latex-live-preview'
+
+" PHP
+Plug 'StanAngeloff/php.vim'
 
 " Elixir
 Plug 'elixir-lang/vim-elixir'
+
+" Go lang
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" Rails
+Plug 'kchmck/vim-coffee-script'
+Plug 'tpope/vim-haml'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-endwise'
+Plug 'thoughtbot/vim-rspec'
+Plug 'https://github.com/slim-template/vim-slim.git'
 
 " Typescript
 Plug 'leafgarland/typescript-vim'
@@ -218,8 +221,8 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 " Old Solarized
 colorscheme solarized
 
-"set background=dark
-set background=light
+set background=dark
+"set background=light
 
 let s:uname = system("echo -n \"$(uname)\"")
 
@@ -342,6 +345,7 @@ let g:ctrlp_use_caching = 30000
 "let g:ctrlp_max_height=5
 "let g:ctrlp_extensions=['quickfix']
 "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_cmd = 'CtrlPMixed'
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
 endif

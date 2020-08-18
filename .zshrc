@@ -84,6 +84,8 @@ alias transep="trans -p en:pt"
 alias transpe="trans -p pt:en"
 alias transesp="trans -p es:pt"
 alias transpes="trans -p pt:es"
+alias transip="trans -p it:pt"
+alias transpi="trans -p pt:it"
 alias psg="ps aux | grep"
 
 # Alias trabalho
@@ -108,3 +110,6 @@ export JAVA_HOME=/usr/lib/jvm/java-8-jdk
 
 # Launchy
 export BROWSER=/usr/bin/firefox
+
+# Decisiv
+source ~/Decisiv/.profile
