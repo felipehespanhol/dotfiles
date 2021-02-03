@@ -88,8 +88,15 @@ Plug 'matthewsimo/angular-vim-snippets'
 " VueJS
 Plug 'posva/vim-vue'
 
+" Handlebars and Mustache templating
+Plug 'mustache/vim-mustache-handlebars'
+
 " Linting
 Plug 'dense-analysis/ale'
+
+" Git
+Plug 'zivyangll/git-blame.vim'
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 
 call plug#end()
 
@@ -221,8 +228,8 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 " Old Solarized
 colorscheme solarized
 
-set background=dark
-"set background=light
+"set background=dark
+set background=light
 
 let s:uname = system("echo -n \"$(uname)\"")
 
@@ -384,6 +391,12 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.erb,*.vue"
 
 let delimitMate_expand_cr = 2
 au FileType html,vue let b:delimitMate_matchpairs = "(:),[:],{:}"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim TableMode "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:table_mode_corner_corner='+'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Snipmate "
