@@ -12,9 +12,17 @@ filetype indent on
 call plug#begin('~/.vim/plugged')
 
 " File Search
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+" FZF plugin needs fzf binary. Look for fzf in arch repositories
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'dhruvasagar/vim-table-mode' " use <leader>tm to toggle it
+
+" Autocomplete
+" COC
+" LSP for javascript -> :CocInstall coc-tsserver
+" LSP for ruby -> :CocInstall coc-solargraph
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Draw tables
 Plug 'godlygeek/tabular'
@@ -68,8 +76,8 @@ Plug 'StanAngeloff/php.vim'
 " Elixir
 Plug 'elixir-lang/vim-elixir'
 
-" Go lang
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Go lang (Disabled as I'm not currently using GO)
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Rails
 Plug 'kchmck/vim-coffee-script'
@@ -96,7 +104,9 @@ Plug 'dense-analysis/ale'
 
 " Git
 Plug 'zivyangll/git-blame.vim'
-nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
+
+" Svelte
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
 call plug#end()
 
@@ -341,21 +351,28 @@ let g:NERDTrimTrailingWhitespace = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Open buffer with <C-B>
-nmap <C-B> :CtrlPBuffer<cr>
-let g:ctrlp_custom_ignore='\.git$\|\.pdf$|.log$'
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn)|vendor\/assets\/components$',
-    \ 'file': '\v\.(exe|so|dll)$',
-    \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-    \ }
-let g:ctrlp_use_caching = 30000
-"let g:ctrlp_max_height=5
-"let g:ctrlp_extensions=['quickfix']
-"let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-let g:ctrlp_cmd = 'CtrlPMixed'
-if executable('rg')
-  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
-endif
+" nmap <C-B> :CtrlPBuffer<cr>
+" let g:ctrlp_custom_ignore='\.git$\|\.pdf$|.log$'
+" let g:ctrlp_custom_ignore = {
+"     \ 'dir':  '\v[\/]\.(git|hg|svn)|vendor\/assets\/components$',
+"     \ 'file': '\v\.(exe|so|dll)$',
+"     \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+"     \ }
+" let g:ctrlp_use_caching = 30000
+" "let g:ctrlp_max_height=5
+" "let g:ctrlp_extensions=['quickfix']
+" "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+" let g:ctrlp_cmd = 'CtrlPMixed'
+" if executable('rg')
+"   let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
+" endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FZF fuzzy search "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nmap <C-P> :FZF<CR>
+nmap <C-B> :Buffers<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctags "
@@ -405,6 +422,7 @@ let g:table_mode_corner_corner='+'
 let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['javascript'] = 'javascript,html'
+let g:snipMate = { 'snippet_version' : 1 }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Airline "
@@ -419,11 +437,35 @@ let g:airline_powerline_fonts = 1
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 
 " Set specific linters
+let g:ale_linters = {'ruby': ['standardrb']}
 let g:ale_linters = {
  \   'javascript': ['eslint'],
- \   'ruby': ['rubocop']
+ \   'ruby': ['standardrb']
  \}
+let g:ale_fixers = {'ruby': ['standardrb']}
+let g:ale_fix_on_save = 1 " useful for standardrb
 let g:ale_linters_explicit = 1
 let g:airline#extensions#ale#enabled = 1
 "let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" COC "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nmap <silent> gd <Plug>(coc-definition)
+" nmap <buffer> <leader>gd <Plug>(coc-definition)
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Git blame "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-ruby "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Prevents conflict with standard ruby gem
+let g:ruby_indent_assignment_style = 'variable'
