@@ -14,10 +14,10 @@ root: ~/Decisiv
 # on_project_start: command
 
 # Run on project start, the first time
-on_project_first_start:
-  - decisiv-services/bin/services start
-  - decisiv-services/bin/services bootstrap
-  - decisiv-services/bin/services update_all qa
+# on_project_first_start:
+#   - (asdf shell ruby 2.4.10; ~/Decisiv/decisiv-services/bin/services start)
+#   - (asdf shell ruby 2.4.10; ~/Decisiv/decisiv-services/bin/services bootstrap)
+#   - (asdf shell ruby 2.4.10; ~/Decisiv/decisiv-services/bin/services update_all qa)
 
 # on_project_first_start: command
 # Run on project start, after the first time
@@ -47,14 +47,26 @@ startup_window: editor
 
 windows:
   - server:
-      layout: main-vertical
       panes:
-        - puma-dev -sysbind
-        - pg_ctl start
-        - foreman start
+        - puma-dev:
+          - puma-dev -sysbind
+        - database:
+          - pg_ctl start
+        - server:
+          - cd ~/Decisiv/decisiv-services/bin/
+          - ./services start
+          - ./services bootstrap
+          - ./services update_all qa
+          - cd ~/Decisiv
+        - vpn:
+          - tsh --proxy=decisiv.sh:443 login --auth=okta
+          - sudo openvpn ~/.vpn/vpn-qa-rotated.ovpn
   - editor:
     - cd pricing && vim
   - shell:
     - cd pricing
   - console:
+    - cd pricing
+    - rails c
+  - tests:
     - cd pricing
