@@ -58,13 +58,17 @@ export PATH=$PATH:$HOME/programs/bin
 export ANDROID_HOME=/home/felipe/AndroidSDKs
 export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_HOME/build-tools
 
+# Asdf config
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
 # Tmux config
 # for tmux: export 256color
 [ -n "$TMUX" ] && export TERM="screen-256color"
 export TERM="xterm-256color"
 
 # Tmuxinator config
-export EDITOR="vim"
+export EDITOR="nvim"
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 # NPM config
@@ -88,20 +92,8 @@ alias transip="trans -p it:pt"
 alias transpi="trans -p pt:it"
 alias psg="ps aux | grep"
 
-# Alias trabalho
-function clch() {
-  echo "scale=2;$1/60" | bc
-}
-
-# PCrawler
-export PATH="$HOME/projects/pcrawler/bin:$PATH"
-
 # General scripts
 export PATH="$HOME/scripts:$PATH"
-
-# Asdf config
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
 
 # Android
 #export ANDROID_HOME=/opt/android-sdk
@@ -112,4 +104,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-jdk
 export BROWSER=/usr/bin/firefox
 
 # Decisiv
-source ~/Decisiv/.profile
+DECISIV_PROFILE=~/Decisiv/.profile
+if test -f "$DECISIV_PROFILE"; then
+  source $DECISIV_PROFILE
+fi
