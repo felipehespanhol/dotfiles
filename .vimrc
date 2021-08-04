@@ -7,14 +7,20 @@ filetype indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Install it with
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" Install vim-plug if not present
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 " File Search
 " Plug 'ctrlpvim/ctrlp.vim'
 " FZF plugin needs fzf binary. Look for fzf in arch repositories
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'scrooloose/nerdtree'
 Plug 'dhruvasagar/vim-table-mode' " use <leader>tm to toggle it
 
@@ -41,7 +47,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'MaxMEllon/vim-jsx-pretty'
 
 " UI
-Plug 'lifepillar/vim-solarized8'
+" Plug 'lifepillar/vim-solarized8'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -117,7 +123,7 @@ call plug#end()
 let mapleader=","
 
 " Open vimrc with <leader>v
-nmap <leader>v  :edit   $MYVIMRC<CR>
+nmap <leader>v  :edit   ~/.vimrc<CR>
 nmap <leader>sv :source $MYVIMRC<CR>
 
 " %% as current dir
@@ -152,6 +158,7 @@ endif
 " Clear the search buffer when hitting return
 nnoremap <cr> :nohlsearch<cr>:redraw!<cr>
 nnoremap <leader><leader> ^
+
 
 " Tabular
 "if exists(":Tabularize")
@@ -230,12 +237,6 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 " COLORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Solarized8
-"set t_Co=256
-"let g:solarized_use16 = 1
-"colorscheme solarized8
-
-" Old Solarized
 colorscheme solarized
 
 "set background=dark
@@ -282,31 +283,31 @@ set encoding=utf-8
 set fileencoding=utf-8
 scriptencoding utf-8
 
-set sidescroll=8
-set scrolloff=8
-
-set formatprg=par\ -TbgqRw80
-set autoindent
-set smartindent
-set ignorecase "ignore case when searching
-set smartcase
-set incsearch
-set showmatch
-set matchtime=2
+" set sidescroll=8
+" set scrolloff=8
+" 
+" set formatprg=par\ -TbgqRw80
+" set autoindent
+" set smartindent
+set ignorecase " ignore case when searching
+" set smartcase
+" set incsearch
+" set showmatch
+" set matchtime=2
 set ruler "show cursor pos on status bar
-set relativenumber "show line number
-set autoread
-set wildmenu
-set wildmode=list:longest
-set shortmess=atI
-set timeoutlen=500
-set wrap
+set relativenumber " show line number
+" set autoread
+" set wildmenu
+" set wildmode=list:longest
+" set shortmess=atI
+" set timeoutlen=500
+" set wrap
 "set wrapmargin=80
 set colorcolumn=80
-set visualbell "no crazy beeping
-set hidden
-set title
-set cc=+1
+" set visualbell "no crazy beeping
+" set hidden
+" set title
+" set cc=+1
 set mouse=a
 
 " Custom
@@ -329,15 +330,15 @@ endfunction
 " Save/quit typos
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab Bd bd| cab Wa wa| cab WA wa
 
-autocmd CursorHold * checktime
-
-" Keep line index when reopening a file
-autocmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \ exe "normal g`\"" |
-  \ endif
-
-command! -nargs=* Wrap set wrap linebreak nolist
+" autocmd CursorHold * checktime
+" 
+" " Keep line index when reopening a file
+" autocmd BufReadPost *
+"   \ if line("'\"") > 0 && line("'\"") <= line("$") |
+"   \ exe "normal g`\"" |
+"   \ endif
+" 
+" command! -nargs=* Wrap set wrap linebreak nolist
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDCommenter
@@ -387,6 +388,11 @@ set tags=./tags;
 set backupdir=~/.vim/backup,~/tmp,/var/tmp,/tmp
 set directory=~/.vim/backup,~/tmp,/var/tmp,/tmp
 runtime macros/matchit.vim
+
+" Use new regular expression engine to fix slowlyness
+set re=0
+" Disable auto highlighting of matched parentheses for performance
+set noshowmatch
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LaTeX "
@@ -439,11 +445,14 @@ au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 " Set specific linters
 let g:ale_linters = {'ruby': ['standardrb']}
 let g:ale_linters = {
- \   'javascript': ['eslint'],
- \   'ruby': ['standardrb']
- \}
-let g:ale_fixers = {'ruby': ['standardrb']}
-let g:ale_fix_on_save = 1 " useful for standardrb
+\   'javascript': ['eslint'],
+\   'ruby': ['rubocop']
+\}
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'ruby': ['rubocop']
+\}
+let g:ale_fix_on_save = 0
 let g:ale_linters_explicit = 1
 let g:airline#extensions#ale#enabled = 1
 "let g:ale_sign_column_always = 1
