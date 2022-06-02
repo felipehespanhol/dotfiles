@@ -22,16 +22,18 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'scrooloose/nerdtree'
-Plug 'dhruvasagar/vim-table-mode' " use <leader>tm to toggle it
 
-" Autocomplete
-" COC
-" LSP for javascript -> :CocInstall coc-tsserver
-" LSP for ruby -> :CocInstall coc-solargraph
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Syntax and identation for many languages
+Plug 'sheerun/vim-polyglot'
+
+" Linting
+Plug 'dense-analysis/ale'
 
 " Draw tables
-Plug 'godlygeek/tabular'
+Plug 'godlygeek/tabular' " plasticboy/vim-markdown depends on this
+
+" Markdown support
+Plug 'plasticboy/vim-markdown' " has dependency on 'godlygeek/tabular'
 
 " Dealing with quotes, parenthesis, tags, etc...
 Plug 'Raimondi/delimitMate'
@@ -42,9 +44,6 @@ Plug 'tpope/vim-ragtag'
 
 " Comments
 Plug 'scrooloose/nerdcommenter'
-
-" React
-Plug 'MaxMEllon/vim-jsx-pretty'
 
 " UI
 " Plug 'lifepillar/vim-solarized8'
@@ -71,48 +70,28 @@ Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'felipehespanhol/vim-phaser-snippets'
+Plug 'matthewsimo/angular-vim-snippets'
 
 " LaTeX
 Plug 'gerw/vim-latex-suite'
 "Plug 'xuhdev/vim-latex-live-preview'
 
-" PHP
-Plug 'StanAngeloff/php.vim'
-
-" Elixir
-Plug 'elixir-lang/vim-elixir'
-
-" Go lang (Disabled as I'm not currently using GO)
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 " Rails
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-haml'
-Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-endwise'
 Plug 'thoughtbot/vim-rspec'
 Plug 'https://github.com/slim-template/vim-slim.git'
 
-" Typescript
-Plug 'leafgarland/typescript-vim'
+" Ionic
 Plug 'akz92/vim-ionic2'
-Plug 'matthewsimo/angular-vim-snippets'
-
-" VueJS
-Plug 'posva/vim-vue'
-
-" Handlebars and Mustache templating
-Plug 'mustache/vim-mustache-handlebars'
-
-" Linting
-Plug 'dense-analysis/ale'
 
 " Git
 Plug 'zivyangll/git-blame.vim'
 
-" Svelte
-Plug 'evanleck/vim-svelte', {'branch': 'main'}
+" Table mode
+Plug 'dhruvasagar/vim-table-mode' " use <leader>tm to toggle it
 
 call plug#end()
 
@@ -143,10 +122,14 @@ nnoremap <C-n> :call NERDTreeExpand()<CR>:set relativenumber<CR>
 
 ":vertical resize 50<CR>
 
-" Switch buffers with <leader>ea
+" Buffers
+" Return to previous file with <leader>ea
 map <leader>ea :b#<CR>
+" Go to next buffer with <F12>
 nmap <F12> :bn<CR>
+" Return to previous buffer with <F10>
 nmap <F10> :bp<CR>
+" Cleanup buffers with <F4>
 nmap <F4> :%bdelete<CR>
 
 if &t_Co > 2 || has("gui_running")
@@ -203,15 +186,11 @@ map <leader>l :set list!<CR>
 
 " WINDOW MANAGEMENT
 
-" Split
-noremap <C-\> :vsp<CR>
-noremap <C--> :sp<CR>
-
 " Resize
-noremap <Up> <C-w>+
-noremap <Down> <C-w>-
-noremap <Left> <C-w>>
-noremap <Right> <C-w><
+noremap <C-Up> <C-w>5+
+noremap <C-Down> <C-w>5-
+noremap <C-Left> <C-w>5>
+noremap <C-Right> <C-w>5<
 
 " Move around
 noremap <C-j> <C-w>j
@@ -219,7 +198,10 @@ noremap <C-k> <C-w>k
 noremap <C-h> <C-w>h
 noremap <C-l> <C-w>l
 
+" vabs
 nnoremap gr :tabprevious<CR>
+nnoremap <TAB> :tabn<CR>
+nnoremap <S-TAB> :tabp<CR>
 
 " Greper
 "nmap <silent> <leader>a <Plug>GreperBangWord\|<C-w>p
@@ -233,14 +215,17 @@ let g:vim_action_ag_escape_chars = '#%.^$*+?()[{\\|'
 " RSpec
 map <Leader>t :call RunCurrentSpecFile()<CR>
 
+" Copy to clipboard
+nnoremap <leader>* "+yiw
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 colorscheme solarized
 
-"set background=dark
-set background=light
+set background=dark
+" set background=light
 
 let s:uname = system("echo -n \"$(uname)\"")
 
@@ -250,14 +235,14 @@ let s:uname = system("echo -n \"$(uname)\"")
 
 "let g:tmuxline_preset = 'nightly_fox'
 let g:tmuxline_preset = {
-      \'a'    : '#H',
-      \'b'    : '#S',
-      \'c'    : '#W',
-      \'win'  : '#I #W',
-      \'cwin' : '#I #W',
-      \'x'    : '%a',
-      \'y'    : '%R',
-      \'z'    : 'BAT #(cat /sys/class/power_supply/BAT0/capacity)%'}
+    \'a'    : '#H',
+    \'b'    : '#S',
+    \'c'    : '#W',
+    \'win'  : '#I #W',
+    \'cwin' : '#I #W',
+    \'x'    : '%a',
+    \'y'    : '%R',
+    \'z'    : 'BAT #(cat /sys/class/power_supply/BAT0/capacity)%'}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TAB SPACING/SIZE
@@ -302,8 +287,8 @@ set relativenumber " show line number
 " set shortmess=atI
 " set timeoutlen=500
 " set wrap
-"set wrapmargin=80
-set colorcolumn=80
+"set wrapmargin=100
+set colorcolumn=100
 " set visualbell "no crazy beeping
 " set hidden
 " set title
@@ -348,32 +333,12 @@ let g:NERDSpaceDelims = 1
 let g:NERDTrimTrailingWhitespace = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CtrlP "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Open buffer with <C-B>
-" nmap <C-B> :CtrlPBuffer<cr>
-" let g:ctrlp_custom_ignore='\.git$\|\.pdf$|.log$'
-" let g:ctrlp_custom_ignore = {
-"     \ 'dir':  '\v[\/]\.(git|hg|svn)|vendor\/assets\/components$',
-"     \ 'file': '\v\.(exe|so|dll)$',
-"     \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-"     \ }
-" let g:ctrlp_use_caching = 30000
-" "let g:ctrlp_max_height=5
-" "let g:ctrlp_extensions=['quickfix']
-" "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-" let g:ctrlp_cmd = 'CtrlPMixed'
-" if executable('rg')
-"   let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
-" endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF fuzzy search "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 nmap <C-P> :FZF<CR>
 nmap <C-B> :Buffers<CR>
+nmap <C-i> :History<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctags "
@@ -440,20 +405,23 @@ let g:airline_powerline_fonts = 1
 " Config Linters "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Pretty XML
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+" Pretty JSON
+" %!python -m json.tool
 
 " Set specific linters
-let g:ale_linters = {'ruby': ['standardrb']}
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'ruby': ['rubocop']
+\   'ruby': ['rubocop', 'standardrb']
 \}
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'ruby': ['rubocop']
 \}
+
 let g:ale_fix_on_save = 0
-let g:ale_linters_explicit = 1
+" let g:ale_linters_explicit = 1
 let g:airline#extensions#ale#enabled = 1
 "let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
@@ -478,3 +446,12 @@ nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Prevents conflict with standard ruby gem
 let g:ruby_indent_assignment_style = 'variable'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Markdown config "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0

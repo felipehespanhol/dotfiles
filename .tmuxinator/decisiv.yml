@@ -47,6 +47,7 @@ startup_window: editor
 
 windows:
   - server:
+      layout: 2f04,274x70,0,0[274x33,0,0{167x33,0,0,0,106x33,168,0,5},274x36,0,34{167x36,0,34,6,106x36,168,34,7}]
       panes:
         - puma-dev:
           - puma-dev -sysbind
@@ -57,7 +58,7 @@ windows:
           - ./services start
           - ./services bootstrap
           - ./services update_all qa
-          - cd ~/Decisiv
+          - cd ~/Decisiv/pricing
         - vpn:
           - tsh --proxy=decisiv.sh:443 login --auth=okta
           - sudo openvpn ~/.vpn/vpn-qa-rotated.ovpn
