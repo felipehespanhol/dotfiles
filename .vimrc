@@ -47,7 +47,7 @@ Plug 'scrooloose/nerdcommenter'
 
 " UI
 " Plug 'lifepillar/vim-solarized8'
-Plug 'altercation/vim-colors-solarized'
+Plug 'rafi/awesome-vim-colorschemes'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
@@ -63,14 +63,6 @@ Plug 'majutsushi/tagbar'
 " The Silver Searcher
 Plug 'rking/ag.vim'
 Plug 'Chun-Yang/vim-action-ag'
-
-" Snippets and its dependencies
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
-Plug 'felipehespanhol/vim-phaser-snippets'
-Plug 'matthewsimo/angular-vim-snippets'
 
 " LaTeX
 Plug 'gerw/vim-latex-suite'
@@ -92,6 +84,21 @@ Plug 'zivyangll/git-blame.vim'
 
 " Table mode
 Plug 'dhruvasagar/vim-table-mode' " use <leader>tm to toggle it
+
+" React
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
+" Snippets and its dependencies
+" Plug 'garbas/vim-snipmate'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'felipehespanhol/vim-phaser-snippets'
+Plug 'matthewsimo/angular-vim-snippets'
+" Plug 'mlaursen/vim-react-snippets'
+" Plug 'epilande/vim-react-snippets'
 
 call plug#end()
 
@@ -222,7 +229,7 @@ nnoremap <leader>* "+yiw
 " COLORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-colorscheme solarized
+colorscheme gruvbox
 
 set background=dark
 " set background=light
@@ -390,10 +397,27 @@ let g:table_mode_corner_corner='+'
 " Vim Snipmate "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
-let g:snipMate.scope_aliases = {}
-let g:snipMate.scope_aliases['javascript'] = 'javascript,html'
-let g:snipMate = { 'snippet_version' : 1 }
+" let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
+" let g:snipMate.scope_aliases = {}
+" let g:snipMate.scope_aliases['javascript'] = 'javascript,html'
+" let g:snipMate.scope_aliases['jsx'] = 'javascript,html'
+" let g:snipMate = { 'snippet_version' : 1 }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ultisnips "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+autocmd FileType javascriptreact UltiSnipsAddFiletypes javascript-react.javascript.html
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Airline "
