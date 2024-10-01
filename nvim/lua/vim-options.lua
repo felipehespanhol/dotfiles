@@ -7,7 +7,7 @@ vim.cmd("set splitbelow")
 vim.cmd("set splitright")
 vim.cmd("set listchars=space:·,tab:->\\")
 
-
+-- Leader key
 vim.g.mapleader = ","
 
 -- Open init.lua
