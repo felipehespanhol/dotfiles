@@ -42,16 +42,28 @@ abbr -a ggl 'git pull origin (git branch --show-current)'
 abbr -a gb 'git branch'
 abbr -a gbd 'git branch -D'
 abbr -a gm 'git merge'
+abbr -a gsta 'git stash'
+abbr -a gstp 'git stash pop'
 
 # Tmux
 abbr -a ta tmux attach
 
 # Daily usage
 abbr -a e 'exit'
-abbr -a ll 'ls -l'
-abbr -a la 'ls -la'
-abbr -a l 'ls -l'
+abbr -a ll 'exa -l'
+abbr -a la 'exa -la'
+abbr -a l 'exa -l'
+
+# Rails
+abbr -a be 'bundle exec'
 
 # PopOS specific
-abbr -a inst 'sudo apt install'
-abbr -a remove 'sudo apt remove'
+# abbr -a inst 'sudo apt install'
+# abbr -a remove 'sudo apt remove'
+
+# pnpm
+set -gx PNPM_HOME "/home/felipe/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
