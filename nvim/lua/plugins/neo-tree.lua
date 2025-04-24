@@ -9,8 +9,6 @@ return {
   },
 
   config = function()
-    vim.keymap.set('n', '<C-n>', ':Neotree position=right dir=%:p:h:h reveal_file=%:p<CR>:set relativenumber<CR>', {})
-
     require("neo-tree").setup({
       window = {
         mappings = {
@@ -18,5 +16,8 @@ return {
         }
       }
     })
+
+    vim.keymap.set('n', '<C-n>', ':Neotree position=right reveal_file=%:p<CR>:set relativenumber<CR>', {})
+    -- vim.keymap.set('n', '<C-n>', ':Neotree position=right dir=%:p:h:h reveal_file=%:p hijack_netrw_behavior=disabled<CR>:set relativenumber<CR>', {})
   end
 }

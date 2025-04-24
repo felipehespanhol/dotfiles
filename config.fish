@@ -17,20 +17,21 @@ function fish_user_key_bindings
     bind -M insert \cn history-search-forward
 end
 
+# theme_gruvbox light hard
 theme_gruvbox dark hard
 
 source ~/.asdf/asdf.fish
 
-set -Ux EDITOR nvim
-set -Ux VISUAL nvim
+set -gx EDITOR nvim
+set -gx VISUAL nvim
 
 # Git
 abbr -a ga 'git add'
 abbr -a gst 'git status'
 abbr -a gd 'git diff'
 abbr -a gdca 'git diff --cached'
-abbr -a grs 'git restore'
-abbr -a grst 'git restore --staged'
+abbr -a grst 'git restore'
+abbr -a grsts 'git restore --staged'
 abbr -a glg 'git log'
 abbr -a gc 'git commit'
 abbr -a gcm 'git commit -m'
@@ -44,6 +45,8 @@ abbr -a gbd 'git branch -D'
 abbr -a gm 'git merge'
 abbr -a gsta 'git stash'
 abbr -a gstp 'git stash pop'
+abbr -a grb 'git rebase'
+abbr -a grbm 'git rebase master'
 
 # Tmux
 abbr -a ta tmux attach
@@ -60,6 +63,9 @@ abbr -a be 'bundle exec'
 # PopOS specific
 # abbr -a inst 'sudo apt install'
 # abbr -a remove 'sudo apt remove'
+
+# MyTime
+abbr -a mytime_sidekiq 'bundle exec sidekiq -r ./config/environment.rb -q clients -q push_notifications -q default -q calendars -q prewarm_cache -q merchant_charge_receipt_queue -q dashboard -q reports -q google_reser    ve_api -q compensation -q quickbooks -q reports_sync -q reports_sync_second_level -q marketing_campaigns -q marketing_deliveries -q ingest_data -q google_reserve_feed -q reports_async -q custom_reports -q imports -q exports -q report_backups -q update_openings -c 1 -v'
 
 # pnpm
 set -gx PNPM_HOME "/home/felipe/.local/share/pnpm"

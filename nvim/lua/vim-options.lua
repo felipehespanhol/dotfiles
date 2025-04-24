@@ -38,7 +38,7 @@ vim.keymap.set('n', '<TAB>', ':tabn<CR>')
 vim.keymap.set('n', '<S-TAB>', ':tabp<CR>')
 
 -- Redraw on Enter
-vim.keymap.set('n', '<cr>', ':nohlsearch<CR>:redraw!<CR>')
+vim.keymap.set('n', '<cr>', ':nohlsearch<CR>:redraw!<CR>:echo expand("%:p")<CR>')
 
 -- Ruler
 vim.keymap.set('', '<leader>r', ':set number!<CR>:set relativenumber!<CR>')

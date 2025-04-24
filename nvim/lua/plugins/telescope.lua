@@ -9,6 +9,8 @@ return {
       vim.keymap.set('n', '<C-g>', builtin.live_grep, {})
       vim.keymap.set('n', '<C-b>', builtin.buffers, {})
       vim.keymap.set('n', '<C-h>', builtin.oldfiles, {})
+
+      vim.keymap.set('n', '<leader>dd', builtin.diagnostics, { desc = "[D]ocument [D]iagnostics" })
     end
   },
   {
