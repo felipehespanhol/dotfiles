@@ -11,6 +11,19 @@ return {
       vim.keymap.set('n', '<C-h>', builtin.oldfiles, {})
 
       vim.keymap.set('n', '<leader>dd', builtin.diagnostics, { desc = "[D]ocument [D]iagnostics" })
+
+      -- Visual mode mapping to search selected text
+      vim.keymap.set('v', '<C-g>', function()
+        -- Save the current register contents
+        local original_register = vim.fn.getreg('"')
+        -- Yank the selected text
+        vim.cmd('normal! y')
+        local text = vim.fn.getreg('"')
+        -- Restore the original register contents
+        vim.fn.setreg('"', original_register)
+        -- Start live grep with the selected text
+        builtin.live_grep({ default_text = text })
+      end, { desc = "Live grep selected text" })
     end
   },
   {

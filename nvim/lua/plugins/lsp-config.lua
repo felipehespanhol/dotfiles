@@ -33,10 +33,10 @@ return {
       lspconfig.rubocop.setup({
         capabilities = capabilities
       })
-      -- lspconfig.ruby_lsp.setup({
-      --   capabilities = capabilities,
-      --   cmd = { "/home/felipe/.asdf/shims/ruby-lsp" }
-      -- })
+      lspconfig.ruby_lsp.setup({
+        capabilities = capabilities,
+        cmd = { "/home/felipe/.asdf/shims/ruby-lsp" }
+      })
       lspconfig.lua_ls.setup({
         capabilities = capabilities
       })
