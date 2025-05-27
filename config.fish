@@ -20,8 +20,6 @@ end
 # theme_gruvbox light hard
 theme_gruvbox dark hard
 
-source ~/.asdf/asdf.fish
-
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 
@@ -47,6 +45,8 @@ abbr -a gsta 'git stash'
 abbr -a gstp 'git stash pop'
 abbr -a grb 'git rebase'
 abbr -a grbm 'git rebase master'
+abbr -a gcp 'git cherry-pick'
+abbr -a gsh 'git show'
 
 # Tmux
 abbr -a ta tmux attach
@@ -73,3 +73,21 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+
+# start asdf config
+# ASDF configuration code
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
+else
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
+end
+
+# Do not use fish_add_path (added in Fish 3.2) because it
+# potentially changes the order of items in PATH
+ if not contains $_asdf_shims $PATH
+     set -gx --prepend PATH $_asdf_shims
+ end
+ set --erase _asdf_shims
+ # end asdf config
+
+ set -gx --prepend PATH "$HOME/.cargo/bin"

@@ -7,8 +7,13 @@ return {
       local builtin = require("telescope.builtin")
       vim.keymap.set('n', '<C-p>', builtin.find_files, {})
       vim.keymap.set('n', '<C-g>', builtin.live_grep, {})
-      vim.keymap.set('n', '<C-b>', builtin.buffers, {})
       vim.keymap.set('n', '<C-h>', builtin.oldfiles, {})
+      vim.keymap.set('n', '<C-b>', function()
+        builtin.buffers({
+          sort_mru = true,  -- Sort by most recently used
+          ignore_current_buffer = true,  -- Optional: don't show current buffer in list
+        })
+      end, {})
 
       vim.keymap.set('n', '<leader>dd', builtin.diagnostics, { desc = "[D]ocument [D]iagnostics" })
 
