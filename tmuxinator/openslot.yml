@@ -1,24 +1,28 @@
-# ~/.tmuxinator/lemoney.yml
+# /home/felipe/.config/tmuxinator/openslot.yml
 
-name: lemoney
-root: ~/projects/lemoney_projects/lemmoney
+name: openslot
+root: ~/MyTime/openslot
 
 # Optional tmux socket
 # socket_name: foo
 
-# Runs before everything. Use it to start daemons etc.
-# Deprecated #
-# pre: sudo systemctl stop postgresql && sudo systemctl stop redis
+# Note that the pre and post options have been deprecated and will be replaced by
+# project hooks.
 
 # Project hooks
+
 # Runs on project start, always
-on_project_start: sudo systemctl stop postgresql && sudo systemctl stop redis
+# on_project_start: command
+
 # Run on project start, the first time
 # on_project_first_start: command
+
 # Run on project start, after the first time
 # on_project_restart: command
+
 # Run on project exit ( detaching from tmux session )
 # on_project_exit: command
+
 # Run on project stop
 # on_project_stop: command
 
@@ -28,7 +32,7 @@ on_project_start: sudo systemctl stop postgresql && sudo systemctl stop redis
 # Pass command line options to tmux. Useful for specifying a different tmux.conf.
 # tmux_options: -f ~/.tmux.mac.conf
 
-# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# Change the command to call tmux. This can be used by derivatives/wrappers like byobu.
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
@@ -40,11 +44,19 @@ on_project_start: sudo systemctl stop postgresql && sudo systemctl stop redis
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
 
-# Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t lemoney
-
 windows:
-  - server: docker-compose run --service-ports web
-  - editor: vim
-  - shell: echo "foi"
-  - console: docker-compose run --service-ports --entrypoint "bundle exec rails c" app
+  - server:
+     layout: 3131,318x58,0,0[318x38,0,0{116x38,0,0,1,201x38,117,0,6},318x19,0,39{158x19,0,39,7,159x19,159,39,8}]
+     panes:
+       - MySQL/ElasticSearch/Redis:
+           - docker-compose up
+       - Rails Server:
+           - bundle exec rails s
+       - Sidekiq:
+           - mytime_sidekiq
+       - Webpack:
+           - yarn run webpack
+  - nvim: nvim
+  - shell:
+  - console: bundle exec rails c
+  - tests:
