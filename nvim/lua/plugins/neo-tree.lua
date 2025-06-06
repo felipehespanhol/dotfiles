@@ -11,6 +11,7 @@ return {
   config = function()
     require("neo-tree").setup({
       window = {
+        width = 60,
         mappings = {
           -- ["o"] = "open"
         }

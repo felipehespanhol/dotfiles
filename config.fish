@@ -84,10 +84,19 @@ end
 
 # Do not use fish_add_path (added in Fish 3.2) because it
 # potentially changes the order of items in PATH
- if not contains $_asdf_shims $PATH
-     set -gx --prepend PATH $_asdf_shims
- end
- set --erase _asdf_shims
- # end asdf config
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+end
+set --erase _asdf_shims
+# end asdf config
 
- set -gx --prepend PATH "$HOME/.cargo/bin"
+# Rust
+set -gx --prepend PATH "$HOME/.cargo/bin"
+
+# RVM
+# set -gx --prepend PATH "$HOME/.rvm/bin"
+# rvm default
+
+# Set GCC and G++ versions to 13 in order to compile Ruby 3.3.0+ dependencies
+set -gx CC /usr/bin/gcc-13
+set -gx CXX /usr/bin/g++-13

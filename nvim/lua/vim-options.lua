@@ -3,6 +3,7 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set relativenumber")
+vim.cmd("set number")
 vim.cmd("set splitbelow")
 vim.cmd("set splitright")
 vim.cmd("set listchars=space:·,tab:->\\")
@@ -41,7 +42,32 @@ vim.keymap.set('n', '<S-TAB>', ':tabp<CR>')
 vim.keymap.set('n', '<cr>', ':nohlsearch<CR>:redraw!<CR>:echo expand("%:p")<CR>')
 
 -- Ruler
-vim.keymap.set('', '<leader>r', ':set number!<CR>:set relativenumber!<CR>')
+local function toggle_relative_numbers()
+  if vim.wo.relativenumber then
+    vim.wo.relativenumber = false
+    vim.wo.number = true
+  else
+    vim.wo.relativenumber = true
+    vim.wo.number = true  -- keep showing absolute number for current line
+  end
+end
+vim.keymap.set('n', '<leader>r', toggle_relative_numbers, { desc = 'Toggle relative line numbers' })
 
 -- White spaces
 vim.keymap.set('n', '<leader>l', ':set list!<CR>')
+
+-- Reload NeoVIM config
+vim.keymap.set('n', '<leader>sv', function()
+  -- Save changes first
+  if vim.bo.modified then
+    vim.cmd.write()
+  end
+
+  -- Clear lazy.nvim cache
+  require('lazy.core.cache').reset()
+
+  -- Reload just the init.lua
+  vim.cmd('luafile ' .. vim.fn.stdpath('config') .. '/init.lua')
+
+  vim.notify('Config reloaded!', vim.log.levels.INFO)
+end, { desc = 'Reload config' })
