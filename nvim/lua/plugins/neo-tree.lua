@@ -13,12 +13,34 @@ return {
       window = {
         width = 60,
         mappings = {
-          -- ["o"] = "open"
+          ["<C-n>"] = "close_window",
+        },
+        filesystem = {
+          hijack_netrw_behavior = "open_default",  -- Prevents changing the working directory
+          use_default_mappings = false,            -- Disable default mappings that might affect pwd
+          bind_to_cwd = false,                     -- Don't bind the tree to the current directory
+          follow_current_file = {
+            enabled = true,                        -- Still follow the current file
+            leave_dirs_open = false,               -- Don't leave directories open when following
+          },
         }
       }
     })
 
-    vim.keymap.set('n', '<C-n>', ':Neotree position=right reveal_file=%:p<CR>:set relativenumber<CR>', {})
-    -- vim.keymap.set('n', '<C-n>', ':Neotree position=right dir=%:p:h:h reveal_file=%:p hijack_netrw_behavior=disabled<CR>:set relativenumber<CR>', {})
+    -- Toggle NeoTree with Ctrl+n
+    vim.keymap.set('n', '<C-n>', function()
+      local manager = require("neo-tree.sources.manager")
+      local renderer = require("neo-tree.ui.renderer")
+
+      local state = manager.get_state("filesystem")
+      local window_exists = renderer.window_exists(state)
+
+      if window_exists then
+        vim.cmd("Neotree close")
+      else
+        vim.cmd("Neotree position=right reveal_file=%:p")
+        vim.cmd("set relativenumber")
+      end
+    end, {})
   end
 }

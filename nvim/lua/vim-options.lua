@@ -11,9 +11,6 @@ vim.cmd("set listchars=space:·,tab:->\\")
 -- Leader key
 vim.g.mapleader = ","
 
--- Open init.lua
-vim.keymap.set('n', '<leader>v', ':edit ~/.config/nvim/lua/vim-options.lua<CR>')
-
 -- vim.keymap.set('n', '<C-n> :call NERDTreeExpand()<CR>', ':set relativenumber<CR>')
 
 -- Buffers
@@ -34,7 +31,7 @@ vim.keymap.set('n', '<C-l>', '<C-w>l')
 vim.keymap.set('n', '<leader><leader>', '^')
 
 -- Tabs
-vim.keymap.set('n', 'gr', ':tabprevious<CR>')
+vim.keymap.set('n', 'gr', ':tabp<CR>')
 vim.keymap.set('n', '<TAB>', ':tabn<CR>')
 vim.keymap.set('n', '<S-TAB>', ':tabp<CR>')
 
@@ -55,6 +52,9 @@ vim.keymap.set('n', '<leader>r', toggle_relative_numbers, { desc = 'Toggle relat
 
 -- White spaces
 vim.keymap.set('n', '<leader>l', ':set list!<CR>')
+
+-- Open NeoVIM config: edit init.lua
+vim.keymap.set('n', '<leader>v', ':edit ~/.config/nvim/lua/vim-options.lua<CR>')
 
 -- Reload NeoVIM config
 vim.keymap.set('n', '<leader>sv', function()
