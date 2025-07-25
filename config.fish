@@ -30,6 +30,7 @@ if status --is-interactive
 
   # theme_gruvbox light hard
   theme_gruvbox dark hard
+  # install with `fisher install jomik/fish-gruvbox`
 
   # Editor
   set -gx EDITOR nvim
@@ -96,6 +97,6 @@ if status --is-interactive
   # End ASDF config
 
   # Set GCC and G++ versions to 13 in order to compile Ruby 3.3.0+ dependencies
-  set -gx CC /usr/bin/gcc-13
-  set -gx CXX /usr/bin/g++-13
+  # set -gx CC /usr/bin/gcc-13
+  # set -gx CXX /usr/bin/g++-13
 end
