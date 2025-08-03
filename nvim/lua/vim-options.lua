@@ -8,6 +8,9 @@ vim.cmd("set splitbelow")
 vim.cmd("set splitright")
 vim.cmd("set listchars=space:·,tab:->\\")
 
+vim.opt.encoding = 'utf-8'
+vim.opt.fileencoding = 'utf-8'
+
 -- Leader key
 vim.g.mapleader = ","
 

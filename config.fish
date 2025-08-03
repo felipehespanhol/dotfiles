@@ -78,25 +78,13 @@ if status --is-interactive
 
   # PATH management
   fish_add_path "$PNPM_HOME"
-  fish_add_path "$HOME/.cargo/bin" # Rust
-
-  # Start ASDF config
-  # ASDF configuration code
-  if test -z $ASDF_DATA_DIR
-      set _asdf_shims "$HOME/.asdf/shims"
-  else
-      set _asdf_shims "$ASDF_DATA_DIR/shims"
-  end
-
-  # Do not use fish_add_path (added in Fish 3.2) because it
-  # potentially changes the order of items in PATH
-  if not contains $_asdf_shims $PATH
-      set -gx --prepend PATH $_asdf_shims
-  end
-  set --erase _asdf_shims
-  # End ASDF config
+  # Rust
+  # fish_add_path "$HOME/.cargo/bin"
 
   # Set GCC and G++ versions to 13 in order to compile Ruby 3.3.0+ dependencies
   # set -gx CC /usr/bin/gcc-13
   # set -gx CXX /usr/bin/g++-13
+
+  mise activate fish | source
 end
+

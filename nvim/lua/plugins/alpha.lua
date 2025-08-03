@@ -14,7 +14,6 @@ return {
 
     dashboard.section.header.val = {
         [[                                                          ]],
-        [[                                                          ]],
         [[  ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗  ]],
         [[  ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║  ]],
         [[  ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║  ]],
@@ -22,22 +21,20 @@ return {
         [[  ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║  ]],
         [[  ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝  ]],
         [[                                                          ]],
-        [[                                                          ]],
     }
 
      dashboard.section.buttons.val = {
-       dashboard.button("<C-p>", "  Find file", ":Telescope find_files <CR>"),
+       dashboard.button("<C-p>", "󰍉 Find file", ":Telescope find_files <CR>"),
        dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
        dashboard.button("<C-h>", "  Recently used files", ":Telescope oldfiles <CR>"),
-       dashboard.button("<C-g>", "  Find text", ":Telescope live_grep <CR>"),
-       dashboard.button("<C-n>", "  Open folder", ":Neotree position=right <CR>:set relativenumber <CR>"),
+       dashboard.button("<C-g>", "󰈞 Find text", ":Telescope live_grep <CR>"),
+       dashboard.button("<C-n>", " Open folder", ":Neotree position=right <CR>:set relativenumber <CR>"),
        dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua<CR>"),
-       dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
+       dashboard.button("q", "󰿅 Quit Neovim", ":qa<CR>"),
     }
 
     local function footer()
       return {
-        [[                                           ]],
         [[                                           ]],
         [[  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ]],
         [[  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ]],
