@@ -66,9 +66,9 @@ if status --is-interactive
 
   # Daily usage
   abbr -a e 'exit'
-  abbr -a ll 'exa -l'
-  abbr -a la 'exa -la'
-  abbr -a l 'exa -l'
+  abbr -a ll 'exa --color=always -l'
+  abbr -a la 'exa --color=always -la'
+  abbr -a l 'exa --color=always -l'
 
   # Rails
   abbr -a be 'bundle exec'
