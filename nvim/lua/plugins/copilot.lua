@@ -1,3 +1,4 @@
+-- Config with :Copilot setup
 return {
   {
     "github/copilot.vim"
