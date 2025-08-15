@@ -14,6 +14,7 @@ vim.opt.fileencoding = 'utf-8'
 -- Leader key
 vim.g.mapleader = ","
 
+-- NERDTree was replaced by NeoTree in my config and its config lies in ~/.config/nvim/lua/plugins/neo-tree.lua
 -- vim.keymap.set('n', '<C-n> :call NERDTreeExpand()<CR>', ':set relativenumber<CR>')
 
 -- Buffers
@@ -40,6 +41,10 @@ vim.keymap.set('n', '<S-TAB>', ':tabp<CR>')
 
 -- Redraw on Enter
 vim.keymap.set('n', '<cr>', ':nohlsearch<CR>:redraw!<CR>:echo expand("%:p")<CR>')
+
+-- Session management
+vim.keymap.set('n', '<leader>ss', ':mksession! ~/.local/nvim/session.vim<CR>', { desc = 'Save session' })
+vim.keymap.set('n', '<leader>sr', ':source ~/.local/nvim/session.vim<CR>', { desc = 'Load session' })
 
 -- Ruler
 local function toggle_relative_numbers()

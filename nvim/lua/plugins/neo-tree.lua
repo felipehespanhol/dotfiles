@@ -39,7 +39,8 @@ return {
         vim.cmd("Neotree close")
       else
         vim.cmd("Neotree position=right reveal_file=%:p")
-        vim.cmd("set relativenumber")
+        vim.cmd(":set number")  -- Enable relative line numbers
+        vim.cmd(":set relativenumber")  -- Enable relative line numbers
       end
     end, {})
   end
