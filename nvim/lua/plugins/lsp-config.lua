@@ -35,7 +35,8 @@ return {
       })
       lspconfig.ruby_lsp.setup({
         capabilities = capabilities,
-        cmd = { vim.fn.system({"which", "ruby-lsp"}) }
+        -- cmd = { vim.fn.system({"which", "ruby-lsp"}) }
+        cmd = { "/home/felipe/.local/share/mise/installs/ruby/3.4.5/bin/ruby-lsp" }
       })
       lspconfig.lua_ls.setup({
         capabilities = capabilities
