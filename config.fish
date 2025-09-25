@@ -57,6 +57,7 @@ if status --is-interactive
   abbr -a gsta 'git stash'
   abbr -a gstp 'git stash pop'
   abbr -a grb 'git rebase'
+  abbr -a grbc 'git rebase --continue'
   abbr -a grbm 'git rebase master'
   abbr -a gcp 'git cherry-pick'
   abbr -a gsh 'git show'
