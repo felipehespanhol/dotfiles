@@ -1,11 +1,3 @@
-# Completions
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:~/.docker/completions:~/.zsh/completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
-
 # Lsd
 alias ls='lsd'
 alias l='ls -l'
@@ -49,7 +41,6 @@ alias drails="docker compose run web bin/rails"
 drspec() {
   docker compose run --rm web bin/rspec "$@"
 }
-compdef drspec=rspec
 
 # VI mode
 bindkey -v
@@ -70,8 +61,22 @@ source /opt/homebrew/Cellar/fzf/0.65.2/shell/key-bindings.zsh
 
 # Fish-like autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-bindkey '^i' autosuggest-accept # set ctrl+i to accept suggestion
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#5c8dbf' # set a light blue color to highlight
+
+# Use tab for both autosuggestions and completions
+autosuggest-complete-or-accept() {
+    # If there's a suggestion, accept it
+    if [ -n "$BUFFER" ] && [ -n "$POSTDISPLAY" ]; then
+        zle autosuggest-accept
+    else
+        # Otherwise, try completion
+        zle expand-or-complete
+    fi
+}
+
+# Create the widget and bind it to Tab
+zle -N autosuggest-complete-or-accept
+bindkey '^i' autosuggest-complete-or-accept
 
 # alias drspec="docker compose run web bin/rspec"
 
@@ -99,3 +104,22 @@ PROMPT="%F{blue}%B[%D{%H:%M:%S}]%b%f %F{green}%B%~%b%f\$(git_branch) %# "
 # daisy
 export COMPOSE_FILE="docker-compose.next.yml"
 export COMPOSE_PROFILES="dashboards,redox" # If you're using redox/opensearch dashboards
+
+# Completions - PUT THIS AT THE END OF YOUR .zshrc
+if type brew &>/dev/null; then
+  # Load all standard Homebrew completions
+  FPATH="$(brew --prefix)/share/zsh-completions:$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  # Also add your custom completion directories
+  FPATH="~/.docker/completions:~/.zsh/completions:${FPATH}"
+fi
+
+# Initialize completions
+autoload -Uz compinit
+compinit
+
+# Basic completion configuration
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors ''
+
+compdef drspec=rspec
