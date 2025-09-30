@@ -8,14 +8,13 @@ vim.cmd("set splitbelow")
 vim.cmd("set splitright")
 vim.cmd("set listchars=space:·,tab:->\\")
 
+-- vim.o.background = "light"
+
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
 
 -- Leader key
 vim.g.mapleader = ","
-
--- NERDTree was replaced by NeoTree in my config and its config lies in ~/.config/nvim/lua/plugins/neo-tree.lua
--- vim.keymap.set('n', '<C-n> :call NERDTreeExpand()<CR>', ':set relativenumber<CR>')
 
 -- Buffers
 vim.keymap.set('n', '<F4>', ':%bdelete<CR>') -- Delete all buffers
@@ -61,7 +60,7 @@ vim.keymap.set('n', '<leader>r', toggle_relative_numbers, { desc = 'Toggle relat
 -- White spaces
 vim.keymap.set('n', '<leader>l', ':set list!<CR>')
 
--- Open NeoVIM config: edit init.lua
+-- Open NeoVIM config
 vim.keymap.set('n', '<leader>v', ':edit ~/.config/nvim/lua/vim-options.lua<CR>')
 
 -- Reload NeoVIM config

@@ -62,6 +62,9 @@ eval "$(zoxide init zsh)"
 # mise-en-place
 eval "$(mise activate zsh)"
 
+# Posgres mise-en-place
+export PKG_CONFIG_PATH="/opt/homebrew/bin/pkg-config:$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix curl)/lib/pkgconfig:$(brew --prefix zlib)/lib/pkgconfig"
+
 # FZF history search
 source /opt/homebrew/Cellar/fzf/0.65.2/shell/key-bindings.zsh
 
@@ -76,9 +79,11 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#5c8dbf' # set a light blue color to highlig
 export EDITOR="nvim"
 export VISUAL="nvim"
 
-
 # Prompt
 setopt prompt_subst
+
+# Homebrew
+export HOMEBREW_PREFIX=/opt/homebrew
 
 # Function to show git branch
 git_branch() {

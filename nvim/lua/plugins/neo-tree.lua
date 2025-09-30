@@ -15,15 +15,15 @@ return {
         mappings = {
           ["<C-n>"] = "close_window",
         },
-        filesystem = {
-          hijack_netrw_behavior = "open_default",  -- Prevents changing the working directory
-          use_default_mappings = false,            -- Disable default mappings that might affect pwd
-          bind_to_cwd = false,                     -- Don't bind the tree to the current directory
-          follow_current_file = {
-            enabled = true,                        -- Still follow the current file
-            leave_dirs_open = false,               -- Don't leave directories open when following
-          },
-        }
+      },
+      filesystem = {
+        hijack_netrw_behavior = "open_default",  -- Prevents changing the working directory
+        use_default_mappings = false,            -- Disable default mappings that might affect pwd
+        bind_to_cwd = false,                     -- Don't bind the tree to the current directory
+        follow_current_file = {
+          enabled = true,                        -- Still follow the current file
+          leave_dirs_open = false,               -- Don't leave directories open when following
+        },
       }
     })
 
@@ -38,8 +38,14 @@ return {
       if window_exists then
         vim.cmd("Neotree close")
       else
-        vim.cmd("Neotree position=right reveal_file=%:p")
-        vim.cmd(":set number")  -- Enable relative line numbers
+        -- Only reveal the current file if it's a valid file
+        local current_file = vim.fn.expand('%:p')
+        if current_file and current_file ~= "" and vim.fn.filereadable(current_file) == 1 then
+          vim.cmd("Neotree position=right reveal_file=" .. vim.fn.fnameescape(current_file))
+        else
+          vim.cmd("Neotree position=right")
+        end
+        vim.cmd(":set number")  -- Enable line numbers
         vim.cmd(":set relativenumber")  -- Enable relative line numbers
       end
     end, {})
