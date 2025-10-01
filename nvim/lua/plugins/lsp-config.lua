@@ -25,20 +25,18 @@ return {
         cmp_nvim_lsp.default_capabilities()
       )
 
-      local lspconfig = require("lspconfig")
-
-      lspconfig.tailwindcss.setup({
+      vim.lsp.config('tailwindcss', {
         capabilities = capabilities
       })
-      lspconfig.rubocop.setup({
+      vim.lsp.config('rubocop', {
         capabilities = capabilities
       })
-      lspconfig.ruby_lsp.setup({
+      vim.lsp.config('ruby_lsp', {
         capabilities = capabilities,
         -- cmd = { vim.fn.system({"which", "ruby-lsp"}) }
         cmd = { "/home/felipe/.local/share/mise/installs/ruby/3.4.5/bin/ruby-lsp" }
       })
-      lspconfig.lua_ls.setup({
+      vim.lsp.config('lua_ls', {
         capabilities = capabilities
       })
 
