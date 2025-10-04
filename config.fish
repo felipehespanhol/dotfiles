@@ -1,3 +1,5 @@
+source /usr/share/cachyos-fish-config/cachyos-config.fish
+
 function fish_user_key_bindings
   # Bind Ctrl+P to go back in history in insert mode
   bind -M insert \cp history-search-backward
@@ -6,12 +8,32 @@ function fish_user_key_bindings
   bind -M insert \cn history-search-forward
 end
 
-function mytime_sidekiq
-  bundle exec sidekiq -r ./config/environment.rb \
-      -q clients -q push_notifications -q default \
-      -q calendars -q prewarm_cache -q merchant_charge_receipt_queue \
-      -q dashboard -q reports -q google_reserve_api \
-      -c 1 -v $argv
+function fish_prompt
+    # Get the current time in HH:MM:SS format
+    set -l time_str (date +%H:%M:%S)
+
+    # Get the current working directory, with ~ for the home directory
+    set -l cwd (prompt_pwd)
+
+    # Get the git branch name if in a git repository
+    set -l git_branch ""
+    if test (git rev-parse --is-inside-work-tree 2>/dev/null)
+        set git_branch (git branch --show-current 2>/dev/null)
+    end
+
+    # Print the prompt with colors
+    echo -n (set_color brgreen)"["
+    echo -n (set_color cyan)"$time_str"
+    echo -n (set_color brgreen)"] "
+    echo -n (set_color yellow)"$cwd"
+
+    # Append the branch if it exists, in a different color
+    if test -n "$git_branch"
+        echo -n (set_color brgreen)" ("(set_color cyan)"$git_branch"(set_color brgreen)")"
+    end
+
+    # Reset colors and add the final prompt character
+    echo -n (set_color normal)" > "
 end
 
 if status --is-interactive
@@ -29,7 +51,7 @@ if status --is-interactive
   bind \cn down-or-search
 
   # theme_gruvbox light hard
-  theme_gruvbox dark hard
+  # theme_gruvbox dark hard
   # install with `fisher install jomik/fish-gruvbox`
 
   # Editor
@@ -67,9 +89,9 @@ if status --is-interactive
 
   # Daily usage
   abbr -a e 'exit'
-  abbr -a ll 'exa --color=always -l'
-  abbr -a la 'exa --color=always -la'
-  abbr -a l 'exa --color=always -l'
+  abbr -a ll 'eza --color=always -l'
+  abbr -a la 'eza --color=always -la'
+  abbr -a l 'eza --color=always -l'
 
   # Rails
   abbr -a be 'bundle exec'
@@ -79,6 +101,7 @@ if status --is-interactive
 
   # PATH management
   fish_add_path "$PNPM_HOME"
+
   # Rust
   # fish_add_path "$HOME/.cargo/bin"
 
