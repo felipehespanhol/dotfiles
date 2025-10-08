@@ -30,7 +30,7 @@ return {
        dashboard.button("<C-g>", "󰈞 Find text", ":Telescope live_grep <CR>"),
        dashboard.button("<C-n>", " Open folder", ":Neotree position=right <CR>:set relativenumber <CR>"),
        dashboard.button("r", "󰉉 Restore session", ":source ~/.local/nvim/session.vim <CR>"),
-       dashboard.button("c", " Configuration", ":e ~/.config/nvim/init.lua<CR>"),
+       dashboard.button("c", " Configuration", ":e ~/.config/nvim/lua/vim-options.lua<CR>"),
        dashboard.button("q", "󰿅 Quit Neovim", ":qa<CR>"),
     }
 
@@ -57,6 +57,7 @@ return {
         [[  ⠀⠀⠀⠀⠀⠀⠀⣸⣿⡇⠀⠙⠿⣶⣦⣤⣤⣤⣤⣤⣤⣤⣶⣾⣿⠿⠛⠁⠀⠘⢧⠀⠀⠀⠀⠀     ]],
         [[  ⠀⠀⠀⠀⠀⠀⠀⢸⡿⠀⠀⠀⠀⠀⠈⠙⠛⠛⠛⠛⠛⠋⠉⠉⠀⠀⠀⠀⠀⠀⠘⠀⠀⠀⠀⠀     ]],
         [[  ⠀⠀⠀⠀⠀⠀⠀⠻⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ]],
+        [[  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ]],
         [[  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ]],
         [[  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ]],
         [[                                           ]],
