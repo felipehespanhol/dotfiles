@@ -13,7 +13,7 @@ return {
     build = "make tiktoken", -- Only on MacOS or Linux
     opts = {
       debug = true, -- Enable debugging
-      model = "gpt-4",
+      model = "gpt-5",
       temperature = 0.1, -- default 0.1
       -- See Configuration section for rest
     },
