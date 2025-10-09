@@ -8,8 +8,6 @@ vim.cmd("set splitbelow")
 vim.cmd("set splitright")
 vim.cmd("set listchars=space:·,tab:->\\")
 
-vim.o.background = "light"
-
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
 

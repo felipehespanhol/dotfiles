@@ -3,10 +3,10 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     require('lualine').setup({
-      options = {
-        -- theme = 'gruvbox_dark'
-        theme = 'vscode',
-      },
+      -- options = {
+      --   -- theme = 'gruvbox_dark'
+      --   theme = 'vscode',
+      -- },
       tabline = {
         lualine_a = {
           {

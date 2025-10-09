@@ -48,7 +48,7 @@ return {
   {
     'nvim-telescope/telescope-live-grep-args.nvim',
     keys = {
-      { '<leader>,', '<cmd>Telescope live_grep_args<cr>' },
+      -- { '<leader>,', '<cmd>Telescope live_grep_args<cr>' },
       {
         '<leader>fw',
         function()
