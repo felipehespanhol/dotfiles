@@ -1,17 +1,17 @@
 return {
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
-  -- or                              , branch = '0.1.x',
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.8',
+    -- or                              , branch = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local builtin = require("telescope.builtin")
       vim.keymap.set('n', '<C-p>', builtin.find_files, {})
-      vim.keymap.set('n', '<C-g>', builtin.live_grep, {}) -- ripgrep is required for live_grep to work here
       vim.keymap.set('n', '<C-h>', builtin.oldfiles, {})
       vim.keymap.set('n', '<C-b>', function()
         builtin.buffers({
-          sort_mru = true,  -- Sort by most recently used
-          ignore_current_buffer = true,  -- Optional: don't show current buffer in list
+          sort_mru = true,              -- Sort by most recently used
+          ignore_current_buffer = true, -- Optional: don't show current buffer in list
         })
       end, {})
 
@@ -37,7 +37,7 @@ return {
       require("telescope").setup({
         extensions = {
           ["ui-select"] = {
-            require("telescope.themes").get_dropdown { }
+            require("telescope.themes").get_dropdown {}
           }
         }
       })
@@ -48,7 +48,7 @@ return {
   {
     'nvim-telescope/telescope-live-grep-args.nvim',
     keys = {
-      -- { '<leader>,', '<cmd>Telescope live_grep_args<cr>' },
+      { '<C-g>', '<cmd>Telescope live_grep_args<cr>' },
       {
         '<leader>fw',
         function()
@@ -63,7 +63,7 @@ return {
         end,
         desc = 'Find by Grep (Visual)',
         mode = 'v',
-      },
+      }
     }
   }
 }
