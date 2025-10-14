@@ -27,7 +27,6 @@ return {
     },
     keys = {
       { "<leader>co", "<cmd>CopilotChat<cr>", desc = "Chat with Copilot" },
-    },
-    -- See Commands section for default commands if you want to lazy load on them
+    }
   },
 }
