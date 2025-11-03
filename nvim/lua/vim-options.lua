@@ -78,7 +78,7 @@ vim.keymap.set('n', '<leader>sv', function()
 end, { desc = 'Reload config' })
 
 -- Copy absolute path of current file
-vim.keymap.set('n', '<leader>cc', function()
+vim.keymap.set('n', '<leader>cp', function()
   local name = vim.api.nvim_buf_get_name(0)
   if name == '' then
     vim.notify('No file name for this buffer', vim.log.levels.WARN)
