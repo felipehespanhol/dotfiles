@@ -40,6 +40,26 @@ return {
         capabilities = capabilities
       })
 
+      -- TypeScript/JavaScript language features
+      vim.lsp.config('tl_ls', {
+        capabilities = capabilities,
+      })
+
+      -- ESLint diagnostics and code actions
+      vim.lsp.config('eslint', {
+        capabilities = capabilities,
+        settings = {
+          workingDirectory = { mode = "auto" },
+          format = { enable = true }, -- let ESLint provide fixes via code actions
+          codeAction = {
+            disableRuleComment = { enable = true },
+            showDocumentation = { enable = true },
+          },
+          nodePath = "node_modules",
+          packageManager = "npm",
+        },
+      })
+
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
