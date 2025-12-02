@@ -51,6 +51,9 @@ drspec() {
   docker compose run --rm web bin/rspec "$@"
 }
 
+# Rails
+alias be='bundle exec'
+
 # VI mode
 bindkey -v
 bindkey -M viins '^P' up-history
