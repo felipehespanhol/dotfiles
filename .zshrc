@@ -34,6 +34,13 @@ alias grbm='git rebase master'
 alias gcp='git cherry-pick'
 alias gsh='git show'
 
+# Git switch branch with fzf
+gsb() {
+  local b
+  b=$(git for-each-ref --format='%(refname:short)' refs/heads refs/remotes | sed 's#^origin/##' | sort -u | fzf)
+  [[ -n "$b" ]] && git switch "$b"
+}
+
 # Tmux
 alias ta='tmux attach'
 
