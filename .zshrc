@@ -32,12 +32,24 @@ alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 alias grbm='git rebase master'
 alias gcp='git cherry-pick'
+alias gcpc='git cherry-pick --continue'
+alias gcpa='git cherry-pick --abort'
 alias gsh='git show'
 
 # Git switch branch with fzf
+# gsb() {
+#   local b
+#   b=$(git for-each-ref --format='%(refname:short)' refs/heads refs/remotes | sed 's#^origin/##' | sort -u | fzf)
+#   [[ -n "$b" ]] && git switch "$b"
+# }
+
+# Git switch branch with fzf (recent first)
 gsb() {
   local b
-  b=$(git for-each-ref --format='%(refname:short)' refs/heads refs/remotes | sed 's#^origin/##' | sort -u | fzf)
+  b=$(git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads refs/remotes \
+      | sed 's#^origin/##' \
+      | awk '!seen[$0]++' \
+      | fzf)
   [[ -n "$b" ]] && git switch "$b"
 }
 

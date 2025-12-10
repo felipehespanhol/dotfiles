@@ -58,6 +58,9 @@ vim.keymap.set('n', '<leader>r', toggle_relative_numbers, { desc = 'Toggle relat
 -- White spaces
 vim.keymap.set('n', '<leader>l', ':set list!<CR>')
 
+-- Copy all file content to clipboard
+vim.keymap.set('n', 'yaf', ':%y+<CR>', { desc = 'Yank entire file to clipboard' })
+
 -- Open NeoVIM config
 vim.keymap.set('n', '<leader>v', ':edit ~/.config/nvim/lua/vim-options.lua<CR>')
 

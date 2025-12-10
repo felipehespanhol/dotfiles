@@ -13,7 +13,8 @@ return {
     build = "make tiktoken", -- Only on MacOS or Linux
     opts = {
       debug = true, -- Enable debugging
-      model = "gpt-5",
+      -- model = "gpt-5",
+      model = "claude-sonnet-4.5",
       temperature = 0.1, -- default 0.1
       auto_insert_mode = true,     -- Enter insert mode when opening
       window = {
