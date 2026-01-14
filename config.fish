@@ -39,6 +39,11 @@ end
 if status --is-interactive
   fish_vi_key_bindings
 
+  # Get environment variables from secrests.fish if it exists
+  if test -f ~/.config/fish/secrets.fish
+    source ~/.config/fish/secrets.fish
+  end
+
   # Lazy-load zoxide
   if not functions -q __zoxide_z
     zoxide init fish | source
