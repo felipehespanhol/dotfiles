@@ -6,20 +6,20 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       { "nvim-lua/plenary.nvim", branch = "master" },
-      {
-        "OXY2DEV/markview.nvim",
-        lazy = false,
-        opts = {
-          preview = {
-            filetypes = { "markdown", "codecompanion" },
-            ignore_buftypes = {},
-          },
-        },
-      },
-      {
-        "MeanderingProgrammer/render-markdown.nvim",
-        ft = { "markdown", "codecompanion" }
-      },
+      -- {
+      --   "OXY2DEV/markview.nvim",
+      --   lazy = false,
+      --   opts = {
+      --     preview = {
+      --       filetypes = { "markdown", "codecompanion" },
+      --       ignore_buftypes = {},
+      --     },
+      --   },
+      -- },
+      -- {
+      --   "MeanderingProgrammer/render-markdown.nvim",
+      --   ft = { "markdown", "codecompanion" }
+      -- },
       {
         "HakonHarnes/img-clip.nvim",
         opts = {

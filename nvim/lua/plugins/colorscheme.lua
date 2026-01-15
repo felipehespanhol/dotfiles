@@ -26,9 +26,9 @@
      -- configure and set on startup
      config = function()
        -- Light
-       vim.o.background = "light"
-       vim.g.adwaita_darker = false             -- for darker version
-       vim.g.adwaita_transparent = true        -- makes the background transparent
+       -- vim.o.background = "light"
+       -- vim.g.adwaita_darker = false             -- for darker version
+       -- vim.g.adwaita_transparent = true        -- makes the background transparent
 
        -- Dark
        -- vim.o.background = "dark"
