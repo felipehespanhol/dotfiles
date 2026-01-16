@@ -29,6 +29,7 @@ return {
        dashboard.button("<C-h>", " Recently used files", ":Telescope oldfiles <CR>"),
        dashboard.button("<C-g>", "󰈞 Find text", ":Telescope live_grep_args <CR>"),
        dashboard.button("<C-n>", " Open folder", ":Neotree right<CR>"),
+       dashboard.button("<leader>co", "󰚩 Code Companion", ":CodeCompanionChat<CR>"),
        dashboard.button("r", "󰉉 Restore session", ":source ~/.local/nvim/session.vim <CR>"),
        dashboard.button("c", " Configuration", ":e ~/.config/nvim/lua/vim-options.lua<CR>"),
        dashboard.button("q", "󰿅 Quit Neovim", ":qa<CR>"),

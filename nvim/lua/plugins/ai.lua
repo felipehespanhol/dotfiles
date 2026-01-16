@@ -3,6 +3,7 @@ return {
   {
     "olimorris/codecompanion.nvim",
     version = "^18.0.0",
+    cmd = { "CodeCompanionChat" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       { "nvim-lua/plenary.nvim", branch = "master" },
