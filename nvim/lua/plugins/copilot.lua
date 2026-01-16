@@ -13,7 +13,7 @@ return {
           enabled = true,
           auto_trigger = true,
           keymap = {
-            accept = "<TAB>",
+            accept = false,
             accept_word = false,
             accept_line = false,
             next = "<M-]>",
@@ -22,6 +22,14 @@ return {
           },
         },
       })
+
+      vim.keymap.set("i", "<Tab>", function()
+        if require("copilot.suggestion").is_visible() then
+          require("copilot.suggestion").accept()
+        else
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n", false)
+        end
+      end, { desc = "Copilot Accept or Tab" })
 
       -- 2. Safely initialize the LSP bridge for NES functionality
       -- This is the part that was failing in your original config
