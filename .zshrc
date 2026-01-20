@@ -147,3 +147,11 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors ''
 
 compdef drspec=rspec
+
+# pnpm
+export PNPM_HOME="/Users/felipehespanhol/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
