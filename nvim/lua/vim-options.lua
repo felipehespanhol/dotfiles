@@ -1,12 +1,12 @@
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
-vim.cmd("set relativenumber")
-vim.cmd("set number")
-vim.cmd("set splitbelow")
-vim.cmd("set splitright")
-vim.cmd("set listchars=space:·,tab:->\\")
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.relativenumber = true
+vim.opt.number = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.listchars = { space = "·", tab = "->\\" }
 
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
