@@ -89,11 +89,29 @@ return {
               },
             })
           end,
-        }
+        },
+        acp = {
+          opencode = function()
+            return require("codecompanion.adapters").extend("opencode", {
+              defaults = {
+                timeout = 60000,
+                -- model = "github-copilot/claude-sonnet-4.5",
+                -- model = "github-copilot/claude-opus-4.5", -- use for large plan/research tasks (expensive)
+                -- model = "github-copilot/gemini-3-flash-preview", -- optional alternative
+                -- model = "github-copilot/gpt-5.2",
+              },
+            })
+          end,
+        },
       },
       interactions = {
         chat = {
-          adapter = "copilot",
+          adapter = "opencode",
+          slash_commands = {
+            ["mode"] = {
+              keymaps = { modes = { n = "gm" } },
+            },
+          },
         },
         inline = {
           adapter = "copilot",
@@ -138,8 +156,21 @@ return {
       "nvim-lua/plenary.nvim",
     },
     build = "pnpm install -g mcp-hub@latest",  -- Installs `mcp-hub` node binary globally
-    config = function()
-      require("mcphub").setup()
-    end
+    -- config = function()
+    --   require("mcphub").setup()
+    -- end
+  },
+  {
+    "felipehespanhol/codecompanion-copilot-workspace.nvim",
+    dependencies = { "olimorris/codecompanion.nvim" },
+    main = "codecompanion_copilot_workspace",
+    opts = {
+      -- optional; defaults shown
+      codecompanion = {
+        auto_register = true,
+        override = false,
+        source = "copilot_workspace",
+      },
+    },
   },
 }
