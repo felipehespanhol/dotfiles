@@ -1,4 +1,6 @@
-source /usr/share/cachyos-fish-config/cachyos-config.fish
+if test -f /usr/share/cachyos-fish-config/cachyos-config.fish
+  source /usr/share/cachyos-fish-config/cachyos-config.fish
+end
 
 function fish_user_key_bindings
   # Bind Ctrl+P to go back in history in insert mode
@@ -102,7 +104,7 @@ if status --is-interactive
   abbr -a be 'bundle exec'
 
   # PNPM
-  set -gx PNPM_HOME "/home/felipe/.local/share/pnpm"
+  set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 
   # PATH management
   fish_add_path "$PNPM_HOME"
