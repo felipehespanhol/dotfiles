@@ -71,6 +71,9 @@ return {
           },
         },
       },
+      {
+        "ravitemer/codecompanion-history.nvim",
+      },
     },
     opts = {
       adapters = {
@@ -127,6 +130,14 @@ return {
         -- },
       },
       extensions = {
+        history = {
+          enabled = true,
+          opts = {
+            keymap = "gh",  -- Open history from chat buffer
+            auto_save = true,
+            picker = "telescope", -- or "snacks", "fzf-lua", "default"
+          }
+        },
         mcphub = {
           callback = "mcphub.extensions.codecompanion",
           opts = {

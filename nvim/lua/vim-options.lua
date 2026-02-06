@@ -17,6 +17,7 @@ vim.g.mapleader = ","
 -- Buffers
 vim.keymap.set('n', '<F4>', ':%bdelete<CR>') -- Delete all buffers
 vim.keymap.set('', '<leader>ea', ':b#<CR>') -- Go back to previous buffer
+-- use :bnext and :bprev to navigate buffers, or [b and ]b if you prefer
 
 -- Resize
 vim.keymap.set('n', '<C-Up>', '<C-w>5+')
@@ -40,7 +41,10 @@ vim.keymap.set('n', '<S-TAB>', ':tabp<CR>')
 vim.keymap.set('n', '<cr>', ':nohlsearch<CR>:redraw!<CR>:echo expand("%:p")<CR>')
 
 -- Session management
-vim.keymap.set('n', '<leader>ss', ':mksession! ~/.local/nvim/session.vim<CR>', { desc = 'Save session' })
+vim.keymap.set(
+  'n', '<leader>ss', ':mksession! ~/.local/nvim/session.vim<CR>:echo "Session saved succesfully in ~/.local/nvim/session.vim!"<CR>',
+  { desc = 'Save session' }
+)
 vim.keymap.set('n', '<leader>sr', ':source ~/.local/nvim/session.vim<CR>', { desc = 'Load session' })
 
 -- Ruler
@@ -87,7 +91,7 @@ vim.keymap.set('n', '<leader>cp', function()
     vim.notify('No file name for this buffer', vim.log.levels.WARN)
     return
   end
-  local path = vim.fn.fnamemodify(name, ':p:')      -- absolute path
+  local path = vim.fn.fnamemodify(name, ':.:')      -- relative path
   vim.fn.setreg('+', path)                         -- system clipboard (macOS)
   vim.fn.setreg('*', path)                         -- optional (primary selection)
   vim.notify('Copied: ' .. path)
