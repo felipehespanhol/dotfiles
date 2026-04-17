@@ -1,6 +1,7 @@
 return {
   {
     "zbirenbaum/copilot.lua",
+    lazy = false,
     dependencies = {
       { "copilotlsp-nvim/copilot-lsp" }, -- (optional) for NES functionality
     },
@@ -40,10 +41,11 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
+    lazy = false,
     version = "^18.0.0",
     cmd = { "CodeCompanionChat", "CodeCompanionCmd", "CodeCompanionInline", "CodeCompanionActions" },
     dependencies = {
-      "nvim-treesitter/nvim-treesitter",
+      -- "nvim-treesitter/nvim-treesitter",
       { "nvim-lua/plenary.nvim", branch = "master" },
       -- {
       --   "OXY2DEV/markview.nvim",

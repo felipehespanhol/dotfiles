@@ -116,6 +116,9 @@ if status --is-interactive
   # set -gx CC /usr/bin/gcc-13
   # set -gx CXX /usr/bin/g++-13
 
+  # ComfyUI
+  set -x HSA_OVERRIDE_GFX_VERSION 12.0.0
+
   mise activate fish | source
 end
 
