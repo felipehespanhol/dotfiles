@@ -138,6 +138,9 @@ return {
             keymap = "gh",  -- Open history from chat buffer
             auto_save = true,
             picker = "telescope", -- or "snacks", "fzf-lua", "default"
+            title_generation_opts = {
+              adapter = "copilot",  -- Use HTTP adapter for title generation
+            },
           }
         },
         mcphub = {
