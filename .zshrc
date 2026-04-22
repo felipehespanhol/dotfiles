@@ -27,6 +27,7 @@ alias gbd='git branch -D'
 alias gm='git merge'
 alias gsta='git stash'
 alias gstp='git stash pop'
+alias gstas='git stash -S'
 alias grb='git rebase'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
@@ -55,6 +56,7 @@ gsb() {
 
 # Tmux
 alias ta='tmux attach'
+alias tls='tmux list-sessions'
 
 # Docker
 alias drun="docker compose run web"
