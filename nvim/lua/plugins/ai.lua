@@ -78,6 +78,22 @@ return {
       },
     },
     opts = {
+      display = {
+        chat = {
+          auto_scroll = true,  -- Explicitly enable auto-scroll
+          window = {
+            layout = "vertical",
+            full_height = true,
+            width = 0.5,
+            height = 0.8,
+            opts = {
+              breakindent = true,
+              linebreak = true,
+              wrap = true,
+            },
+          },
+        },
+      },
       adapters = {
         http = {
          gemini = function()
