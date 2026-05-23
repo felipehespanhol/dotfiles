@@ -1,0 +1,58 @@
+layout {
+    pane size=1 borderless=true {
+        plugin location="file:/home/$USER/.config/zellij/plugins/zjstatus.wasm" {
+            format_left   "{mode} "
+            format_center "{tabs}"
+            format_right  "{command_battery} {datetime}"
+            format_space  ""
+
+            border_enabled  "true"
+            // hide_frame_for_single_pane "true"
+
+            mode_normal  "#[bg=#76946A] "
+            mode_tmux    "#[bg=#ffc387] "
+
+            // formatting for inactive tabs
+            // tab_normal              "#[fg=#6C7086] {index} :: {name} "
+            tab_normal              "#[fg=#DCD7BA] {index} :: {name} "
+            // tab_normal_fullscreen   "#[fg=#6C7086] {index} :: {name} [] "
+            tab_normal_fullscreen   "#[fg=#DCD7BA] {index} :: {name} [] "
+            //tab_normal_sync         "#[fg=#6C7086] {index} :: {name} <> "
+            tab_normal_sync         "#[fg=#DCD7BA] {index} :: {name} <> "
+
+            // formatting for the current active tab
+            // tab_active              "#[fg=#9399B2,bold,italic] {name} {floating_indicator}"
+            tab_active              "#[fg=#ffc387,bold,italic] {index} :: {name} {floating_indicator}"
+            // tab_active_fullscreen   "#[fg=#9399B2,bold,italic] {name} {fullscreen_indicator}"
+            tab_active_fullscreen   "#[fg=#ffc387,bold,italic] {name} {fullscreen_indicator}"
+            // tab_active_sync         "#[fg=#9399B2,bold,italic] {name} {sync_indicator}"
+            tab_active_sync         "#[fg=#ffc387,bold,italic] {name} {sync_indicator}"
+
+            // separator between the tabs
+            tab_separator           "#[fg=#6C7086,bg=#181825] | "
+
+            // format when renaming a tab
+            tab_rename              "#[fg=#eba0ac,bg=#181825] {index} {name} {floating_indicator} "
+
+            // indicators
+            tab_sync_indicator       "<> "
+            tab_fullscreen_indicator "[] "
+            tab_floating_indicator   "⬚ "
+
+            datetime        "#[fg=#ffc387,bold] {format} "
+            datetime_format "%H:%Mh %d/%m/%Y %A"
+            datetime_timezone "America/Sao_Paulo"
+
+            // Battery: read via acpi, show percentage + status
+            command_battery_command     "bash -c 'cap=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null); sta=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null); [ -n \"$cap\" ] && echo \"$sta $cap%\" || echo \"⚡\"'"
+
+            command_battery_format      "#[fg=#ffc387,bold] {stdout} "
+            command_battery_interval    "5"
+            command_battery_rendermode  "static"
+        }
+    }
+    pane
+    pane size=1 borderless=true {
+        plugin location="zellij:status-bar"
+    }
+}
