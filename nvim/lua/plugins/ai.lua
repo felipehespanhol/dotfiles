@@ -3,7 +3,7 @@ return {
     "zbirenbaum/copilot.lua",
     lazy = false,
     dependencies = {
-      { "copilotlsp-nvim/copilot-lsp" }, -- (optional) for NES functionality
+      "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
     },
     cmd = "Copilot",
     event = "InsertEnter",
@@ -42,10 +42,10 @@ return {
   {
     "olimorris/codecompanion.nvim",
     lazy = false,
-    version = "^18.0.0",
+    version = "^19.0.0",
     cmd = { "CodeCompanionChat", "CodeCompanionCmd", "CodeCompanionInline", "CodeCompanionActions" },
     dependencies = {
-      -- "nvim-treesitter/nvim-treesitter",
+      -- { "nvim-treesitter/nvim-treesitter" },
       { "nvim-lua/plenary.nvim", branch = "master" },
       -- {
       --   "OXY2DEV/markview.nvim",
@@ -114,8 +114,8 @@ return {
         chat = {
           adapter = "opencode",
           slash_commands = {
-            ["mode"] = {
-              keymaps = { modes = { n = "gm" } },
+            ["acp_session_options"] = {
+              keymaps = { modes = { n = "go" } },
             },
           },
         },
@@ -165,6 +165,70 @@ return {
       { "<leader>co", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Chat with CodeCompanion", noremap = true, silent = true, mode = { "n", "v" } },
       { "<C-a>", "<cmd>CodeCompanionActions<cr>", noremap = true, silent = true, mode = { "n", "v" }, desc = "CodeCompanionActions" },
       { "ga", "<cmd>CodeCompanionChat Add<cr>", noremap = true, silent = true, mode = { "v" }, desc = "CodeCompanionChat Add" },
+      {
+        "<leader>gm",
+        function()
+          local Chat = require("codecompanion.interactions.chat")
+          local chat = Chat.last_chat()
+          if not chat or not chat.acp_connection then
+            vim.notify("No active ACP chat session", vim.log.levels.WARN)
+            return
+          end
+
+          if not chat.acp_connection.session_id then
+            vim.notify("ACP session still initializing, try again", vim.log.levels.WARN)
+            return
+          end
+
+          local Connection = require("codecompanion.acp")
+          local options = chat.acp_connection:get_config_options()
+
+          local mode_opt
+          for _, opt in ipairs(options) do
+            if opt.type == "select" then
+              local flat = Connection.flatten_config_options(opt.options or {})
+              local has_plan, has_build
+              for _, val in ipairs(flat) do
+                if val.value == "plan" then has_plan = true end
+                if val.value == "build" then has_build = true end
+              end
+              if has_plan and has_build then
+                mode_opt = opt
+                break
+              end
+            end
+          end
+
+          if not mode_opt then
+            vim.notify("No session mode option (plan/build) available", vim.log.levels.WARN)
+            return
+          end
+
+          local flat = Connection.flatten_config_options(mode_opt.options or {})
+          local plan_val, build_val
+          for _, val in ipairs(flat) do
+            if val.value == "plan" then plan_val = val end
+            if val.value == "build" then build_val = val end
+          end
+
+          local current = mode_opt.currentValue
+          local target = current == "plan" and build_val or plan_val
+          if not target then
+            vim.notify("Could not determine target mode", vim.log.levels.WARN)
+            return
+          end
+
+          local ok = chat.acp_connection:set_config_option(mode_opt.id, target.value)
+          if ok then
+            if chat.update_metadata then chat:update_metadata() end
+            vim.notify("Session mode: " .. (target.name or target.value), vim.log.levels.INFO)
+          end
+        end,
+        desc = "Toggle ACP session mode (plan/build)",
+        noremap = true,
+        silent = true,
+        mode = { "n" },
+      }
     },
   },
   {
