@@ -1,0 +1,30 @@
+tab_template name="ui" {
+    pane size=1 borderless=true
+    children
+    pane size=1 borderless=true
+}
+
+swap_tiled_layout name="horizontal" {
+    ui {
+        pane
+        pane
+    }
+}
+
+swap_tiled_layout name="vertical" {
+    ui {
+        pane split_direction="vertical" {
+            pane
+            pane
+        }
+    }
+}
+
+swap_tiled_layout name="stacked" {
+    ui {
+        pane split_direction="vertical" {
+            pane
+            pane stacked=true { children; }
+        }
+    }
+}

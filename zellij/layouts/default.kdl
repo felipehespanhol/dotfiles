@@ -1,58 +1,68 @@
 layout {
-    pane size=1 borderless=true {
-        plugin location="file:/home/$USER/.config/zellij/plugins/zjstatus.wasm" {
-            format_left   "{mode} "
-            format_center "{tabs}"
-            format_right  "{command_battery} {datetime}"
-            format_space  ""
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="file:/home/$USER/.config/zellij/plugins/zjstatus.wasm" {
+                format_left   "{mode} "
+                // format_left   ""
+                format_center "{tabs}"
+                format_right  "{command_battery} {datetime}"
+                format_space  ""
 
-            border_enabled  "true"
-            // hide_frame_for_single_pane "true"
+                border_enabled  "true"
+                // hide_frame_for_single_pane "true"
 
-            mode_normal  "#[bg=#76946A] "
-            mode_tmux    "#[bg=#ffc387] "
+                mode_normal  "#[fg=#1a1b26,bg=#76946A] NORMAL "
+                mode_tmux    "#[fg=#1a1b26,bg=#ffc387] TMUX "
+                mode_locked  "#[fg=#1a1b26,bg=#e46876] LOCKED "
+                mode_pane    "#[fg=#1a1b26,bg=#7aa2f7] PANE "
+                mode_tab     "#[fg=#1a1b26,bg=#7dcfff] TAB "
+                mode_resize  "#[fg=#1a1b26,bg=#bb9af7] RESIZE "
+                mode_move    "#[fg=#1a1b26,bg=#c0caf5] MOVE "
+                mode_scroll  "#[fg=#1a1b26,bg=#9ece6a] SCROLL "
+                mode_session "#[fg=#1a1b26,bg=#f7768e] SESSION "
 
-            // formatting for inactive tabs
-            // tab_normal              "#[fg=#6C7086] {index} :: {name} "
-            tab_normal              "#[fg=#DCD7BA] {index} :: {name} "
-            // tab_normal_fullscreen   "#[fg=#6C7086] {index} :: {name} [] "
-            tab_normal_fullscreen   "#[fg=#DCD7BA] {index} :: {name} [] "
-            //tab_normal_sync         "#[fg=#6C7086] {index} :: {name} <> "
-            tab_normal_sync         "#[fg=#DCD7BA] {index} :: {name} <> "
+                // formatting for inactive tabs
+                // tab_normal              "#[fg=#6C7086] {index} :: {name} "
+                tab_normal              "#[fg=#DCD7BA] {index} :: {name} "
+                // tab_normal_fullscreen   "#[fg=#6C7086] {index} :: {name} [] "
+                tab_normal_fullscreen   "#[fg=#DCD7BA] {index} :: {name} [] "
+                //tab_normal_sync         "#[fg=#6C7086] {index} :: {name} <> "
+                tab_normal_sync         "#[fg=#DCD7BA] {index} :: {name} <> "
 
-            // formatting for the current active tab
-            // tab_active              "#[fg=#9399B2,bold,italic] {name} {floating_indicator}"
-            tab_active              "#[fg=#ffc387,bold,italic] {index} :: {name} {floating_indicator}"
-            // tab_active_fullscreen   "#[fg=#9399B2,bold,italic] {name} {fullscreen_indicator}"
-            tab_active_fullscreen   "#[fg=#ffc387,bold,italic] {name} {fullscreen_indicator}"
-            // tab_active_sync         "#[fg=#9399B2,bold,italic] {name} {sync_indicator}"
-            tab_active_sync         "#[fg=#ffc387,bold,italic] {name} {sync_indicator}"
+                // formatting for the current active tab
+                // tab_active              "#[fg=#9399B2,bold,italic] {name} {floating_indicator}"
+                tab_active              "#[fg=#ffc387,bold,italic] {index} :: {name} {floating_indicator}"
+                // tab_active_fullscreen   "#[fg=#9399B2,bold,italic] {name} {fullscreen_indicator}"
+                tab_active_fullscreen   "#[fg=#ffc387,bold,italic] {name} {fullscreen_indicator}"
+                // tab_active_sync         "#[fg=#9399B2,bold,italic] {name} {sync_indicator}"
+                tab_active_sync         "#[fg=#ffc387,bold,italic] {name} {sync_indicator}"
 
-            // separator between the tabs
-            tab_separator           "#[fg=#6C7086,bg=#181825] | "
+                // separator between the tabs
+                tab_separator           "#[fg=#6C7086,bg=#181825] | "
 
-            // format when renaming a tab
-            tab_rename              "#[fg=#eba0ac,bg=#181825] {index} {name} {floating_indicator} "
+                // format when renaming a tab
+                tab_rename              "#[fg=#eba0ac,bg=#181825] {index} {name} {floating_indicator} "
 
-            // indicators
-            tab_sync_indicator       "<> "
-            tab_fullscreen_indicator "[] "
-            tab_floating_indicator   "⬚ "
+                // indicators
+                tab_sync_indicator       "<> "
+                tab_fullscreen_indicator "[] "
+                tab_floating_indicator   "⬚ "
 
-            datetime        "#[fg=#ffc387,bold] {format} "
-            datetime_format "%H:%Mh %d/%m/%Y %A"
-            datetime_timezone "America/Sao_Paulo"
+                datetime        "#[fg=#ffc387,bold] {format} "
+                datetime_format "%H:%Mh %d/%m/%Y %A"
+                datetime_timezone "America/Sao_Paulo"
 
-            // Battery: read via acpi, show percentage + status
-            command_battery_command     "bash -c 'cap=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null); sta=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null); [ -n \"$cap\" ] && echo \"$sta $cap%\" || echo \"⚡\"'"
+                // Battery: read via acpi, show percentage + status
+                command_battery_command     "bash -c 'cap=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null); sta=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null); [ -n \"$cap\" ] && echo \"$sta $cap%\" || echo \"⚡\"'"
 
-            command_battery_format      "#[fg=#ffc387,bold] {stdout} "
-            command_battery_interval    "5"
-            command_battery_rendermode  "static"
+                command_battery_format      "#[fg=#ffc387,bold] {stdout} "
+                command_battery_interval    "5"
+                command_battery_rendermode  "static"
+            }
         }
-    }
-    pane
-    pane size=1 borderless=true {
-        plugin location="zellij:status-bar"
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar"
+        }
     }
 }
