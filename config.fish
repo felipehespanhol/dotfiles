@@ -58,7 +58,7 @@ if status --is-interactive
   bind \cn down-or-search
 
   # theme_gruvbox light hard
-  # theme_gruvbox dark hard
+  theme_gruvbox dark hard
   # install with `fisher install jomik/fish-gruvbox`
 
   # Editor
