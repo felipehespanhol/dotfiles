@@ -20,6 +20,7 @@ alias gcm='git commit -m'
 alias gco='git checkout'
 alias gp='git push'
 alias ggp='git push origin $(git branch --show-current)'
+alias gpf='git push -f origin $(git branch --show-current)'
 alias gl='git pull'
 alias ggl='git pull origin $(git branch --show-current)'
 alias gb='git branch'
@@ -60,9 +61,10 @@ alias tls='tmux list-sessions'
 
 # Docker
 alias drun="docker compose run web"
-alias drails="docker compose run web bin/rails"
+alias dexec="docker compose exec web"
+alias drails="docker compose exec web bin/rails"
 drspec() {
-  docker compose run --rm web bin/rspec "$@"
+  docker compose exec web bin/rspec "$@"
 }
 
 # Rails
@@ -83,7 +85,7 @@ eval "$(mise activate zsh)"
 export PKG_CONFIG_PATH="/opt/homebrew/bin/pkg-config:$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix curl)/lib/pkgconfig:$(brew --prefix zlib)/lib/pkgconfig"
 
 # FZF history search
-source /opt/homebrew/Cellar/fzf/0.65.2/shell/key-bindings.zsh
+source /opt/homebrew/Cellar/fzf/0.74.3/shell/key-bindings.zsh
 
 # Fish-like autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -117,8 +117,8 @@ return {
               defaults = {
                 timeout = 60000,
                 max_tokens = 32000,
-                -- model = "github-copilot/claude-sonnet-4.5",
-                -- model = "github-copilot/claude-opus-4.5", -- use for large plan/research tasks (expensive)
+                -- model = "Github Copilot/Claude Sonnet 5.5",
+                -- model = "Github Copilot/Claude Opus 5.5", -- use for large plan/research tasks (expensive)
                 -- model = "github-copilot/gemini-3-flash-preview", -- optional alternative
                 -- model = "github-copilot/gpt-5.2",
               },

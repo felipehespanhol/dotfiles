@@ -78,6 +78,7 @@ if status --is-interactive
   abbr -a gco 'git checkout'
   abbr -a gp 'git push'
   abbr -a ggp 'git push origin (git branch --show-current)'
+  abbr -a gpf 'git push -f origin (git branch --show-current)'
   abbr -a gl 'git pull'
   abbr -a ggl 'git pull origin (git branch --show-current)'
   abbr -a gb 'git branch'
@@ -89,6 +90,7 @@ if status --is-interactive
   abbr -a grbc 'git rebase --continue'
   abbr -a grbm 'git rebase master'
   abbr -a gcp 'git cherry-pick'
+  abbr -a gsh 'git show'
   abbr -a gsh 'git show'
 
   # Tmux
