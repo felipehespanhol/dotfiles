@@ -96,31 +96,24 @@ return {
       },
       adapters = {
         http = {
-         gemini = function()
-            return require("codecompanion.adapters").extend("gemini", {
+          extend = {
+            gemini = {
               env = {
                 -- set GEMINI_API_KEY env var
                 -- or set api_key here
                 -- api_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
               },
-              schema = {
-                model = {
-                  default = "gemini-3-flash-preview",
-                },
-              },
-            })
-          end,
+            }
+          }
         },
         acp = {
           opencode = function()
             return require("codecompanion.adapters").extend("opencode", {
               defaults = {
-                timeout = 60000,
-                max_tokens = 32000,
-                -- model = "Github Copilot/Claude Sonnet 5.5",
-                -- model = "Github Copilot/Claude Opus 5.5", -- use for large plan/research tasks (expensive)
-                -- model = "github-copilot/gemini-3-flash-preview", -- optional alternative
-                -- model = "github-copilot/gpt-5.2",
+                session_config_options = {
+                  model = "github-copilot/Claude Sonnet 5.5",
+                  -- model = "github-copilot/Claude Opus 5.5", -- use for large plan/research tasks (expensive)
+                },
               },
             })
           end,
@@ -129,6 +122,7 @@ return {
       interactions = {
         chat = {
           adapter = "opencode",
+          model = "github-copilot/Claude Sonnet 5.5",
           slash_commands = {
             ["acp_session_options"] = {
               keymaps = { modes = { n = "go" } },
