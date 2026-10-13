@@ -66,6 +66,14 @@ alias drails="docker compose exec web bin/rails"
 drspec() {
   docker compose exec web bin/rspec "$@"
 }
+# Start selenium container for integration tests
+dstart-selenium() {
+  docker compose --profile selenium up -d selenium
+}
+# Rspec using docker selenium driver for integration tests
+drspeci() {
+  docker compose exec -e CAPYBARA_JAVASCRIPT_DRIVER=docker_selenium web bin/rspec "$@"
+}
 
 # Rails
 alias be='bundle exec'
@@ -85,7 +93,7 @@ eval "$(mise activate zsh)"
 export PKG_CONFIG_PATH="/opt/homebrew/bin/pkg-config:$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix curl)/lib/pkgconfig:$(brew --prefix zlib)/lib/pkgconfig"
 
 # FZF history search
-source /opt/homebrew/Cellar/fzf/0.74.3/shell/key-bindings.zsh
+source /opt/homebrew/Cellar/fzf/0.74.4/shell/key-bindings.zsh
 
 # Fish-like autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
