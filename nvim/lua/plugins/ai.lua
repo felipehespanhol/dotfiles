@@ -73,8 +73,12 @@ return {
           },
         },
       },
+      -- {
+      --   "ravitemer/codecompanion-history.nvim",
+      -- },
       {
-        "ravitemer/codecompanion-history.nvim",
+        "cenk1cenk2/codecompanion-history.nvim",
+        branch = "patch-1",
       },
     },
     opts = {
