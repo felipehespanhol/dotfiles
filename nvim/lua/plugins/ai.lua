@@ -9,6 +9,10 @@ return {
     event = "InsertEnter",
     config = function()
       require("copilot").setup({
+        filetypes = { markdown = true },
+        panel = {
+          keymap = { open = false },
+        },
         suggestion = {
           enabled = true,
           auto_trigger = true,
@@ -30,6 +34,11 @@ return {
           vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n", false)
         end
       end, { desc = "Copilot Accept or Tab" })
+
+      -- Terminal sends <S-CR> as <M-CR> (ESC + CR); treat it as a newline in insert mode
+      vim.keymap.set("i", "<M-CR>", "<CR>", { remap = true, desc = "Newline (Shift+Return)" })
+
+      vim.keymap.set("n", "<leader>cg", "<cmd>Copilot panel<cr>", { desc = "Copilot panel" })
 
       -- 2. Safely initialize the LSP bridge for NES functionality
       -- This is the part that was failing in your original config
